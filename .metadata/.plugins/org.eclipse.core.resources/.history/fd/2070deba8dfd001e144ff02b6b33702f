@@ -1,0 +1,45 @@
+package gestion;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import interfaces.IntYape;
+import util.MysqlConexion;
+
+public class Metodos implements IntYape {
+
+	public boolean Login(int numero, String clave, String tipoUsr) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT TipoUsuario, Numero, Clave FROM logins WHERE Numero=? AND Clave=? AND TipoUsuario=?;";
+			con = MysqlConexion.getConexion();
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numero);
+			psm.setString(2, clave);
+			psm.setString(3, tipoUsr);
+			rs = psm.executeQuery();
+			rs.next();
+			int BDNumero = rs.getInt("numero");
+			String BDClave = rs.getString("clave");
+			String BDTUsuario = rs.getString("TipoUsuario");
+			if(BDNumero != numero)
+				return false;
+			if(BDClave.trim() != (String) clave.trim()) {
+				System.out.println(BDClave);
+				System.out.println(clave);
+				System.out.println("ola, funciono?");
+				return false;
+			}
+			if (BDTUsuario != tipoUsr)
+				return false;
+			return true;
+		} catch(Exception e) {
+			System.out.println("Error en el bloque Try Catch");
+		}
+		return false;
+	}
+
+}
