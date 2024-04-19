@@ -1,6 +1,11 @@
+<%@ page import="java.util.List"%>
+<%@ page import="data.Yapes"%>
 <%@ page import="data.Logins"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<% Logins token = (Logins) request.getAttribute("Token"); %>
+<% 
+
+	List<Yapes> yapeList = (List<Yapes>) request.getAttribute("ListaYapes");
+%>
         <!DOCTYPE html>
         <html>
 
@@ -31,7 +36,7 @@
 
         <body>
             <div class="container">
-                <h1>Bienvenido <%= token.getNombreApellidos() %></h1>
+                <h1>Bienvenido</h1>
                 <br>
                 <div>
                     <form action="Servlet" method="post">
@@ -39,7 +44,7 @@
                         <input type="submit" value="Consultar Saldo" name="type">
                         <input type="submit" value="Historial de Yapes" name="type">
                         <input type="submit" value="Buscar Yape" name="type">
-                        <input type="submit" value="Cerrar Session" name="type">
+                        <input type="submit" value="Cerrar Sesion" name="type">
                     </form>
                     <br>
                 </div>
@@ -56,7 +61,23 @@
                         </tr>
                     </thead>
                     <tbody>
-						<tr></tr>
+                   			<%
+								if(yapeList != null){
+									for(Yapes item : yapeList){
+							%>
+						<tr>
+							<td><%= item.getIdYape() %></td>
+							<td><%= item.getNumeroRealizante() %></td>
+							<td><%= item.getNumeroRecibiente() %></td>
+							<td><%= item.getMonto() %></td>
+							<td><%= item.getFecha() %></td>
+							<td><%= item.getHora() %></td>
+							
+						</tr>
+						<%
+									}
+								}
+							%>
                     </tbody>
                 </table>
             </div>
