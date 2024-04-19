@@ -8,7 +8,7 @@ import data.Yapes;
 public interface IntYape {
 	Logins Login(int numero, String clave, String tipoUsr);
 	List<Yapes> ListarYapes();
-	int obtenerUusario();
+	int obtenerUsuario();
 	void cerrarSesion();
 	public String formatearFecha(String OGFecha);
 	public String formatearHora(String OGHora);

@@ -50,7 +50,7 @@ public class Metodos implements IntYape {
 		return null;
 	}
 	
-	public int obtenerUusario() {
+	public int obtenerUsuario() {
 		Connection con = null;
 		PreparedStatement psm = null;
 		int numero = 0;
@@ -69,6 +69,26 @@ public class Metodos implements IntYape {
 		return numero;
 	}
 	
+	public Logins consultarSaldo() {
+		Logins saldo = new Logins();
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "SELECT Saldo FROM logins WHERE numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, obtenerUsuario());
+			rs = psm.executeQuery();
+			rs.next();
+			saldo.setSaldo(rs.getDouble("Saldo"));
+			return saldo;
+		} catch(Exception e) {
+			System.out.println("Problema en metodos.consultarSaldo");
+		}
+		return null;
+	}
+	
 	public List<Yapes> ListarYapes() {
 		Connection con = null;
 		PreparedStatement psm = null;
@@ -78,8 +98,8 @@ public class Metodos implements IntYape {
 			con = MysqlConexion.getConexion();
 			String sql = "SELECT * FROM Yapes WHERE NumeroRealizante=? OR NumeroRecibiente=?;";
 			psm = con.prepareStatement(sql);
-			psm.setInt(1, obtenerUusario());
-			psm.setInt(2, obtenerUusario());
+			psm.setInt(1, obtenerUsuario());
+			psm.setInt(2, obtenerUsuario());
 			rs = psm.executeQuery();
 			while(rs.next()) {
 				Yapes yape = new Yapes();
@@ -149,5 +169,7 @@ public class Metodos implements IntYape {
 			System.out.println("Error En el Bloque Try Catch Cerrar Sesion");
 		}
 	}
+
+	
 	
 }

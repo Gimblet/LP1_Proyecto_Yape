@@ -3,7 +3,11 @@
 <%@ page import="data.Logins"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <% 
-
+	double dinero = 0.0;
+	if(request.getAttribute("saldo") != null){
+		Logins saldo = (Logins) request.getAttribute("saldo");
+		dinero = saldo.getSaldo();
+	}
 	List<Yapes> yapeList = (List<Yapes>) request.getAttribute("ListaYapes");
 %>
         <!DOCTYPE html>
@@ -37,6 +41,7 @@
         <body>
             <div class="container">
                 <h1>Bienvenido</h1>
+                <h3>Saldo : <% if(dinero == 0.0) { %>OCULTO<% } else { %><%= dinero %><% } %></h3>
                 <br>
                 <div>
                     <form action="Servlet" method="post">

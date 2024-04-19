@@ -1,0 +1,91 @@
+<%@ page import="java.util.List"%>
+<%@ page import="data.Yapes"%>
+<%@ page import="data.Logins"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<% 
+	double dinero = 0.0;
+	if(request.getAttribute("saldo") != null){
+		Logins saldo = (Logins) request.getAttribute("saldo");
+		dinero = saldo.getSaldo();
+	}
+	List<Yapes> yapeList = (List<Yapes>) request.getAttribute("ListaYapes");
+%>
+        <!DOCTYPE html>
+        <html>
+
+        <head>
+            <meta charset="ISO-8859-1">
+            <title>Client Dashboard</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                .container {
+                    margin: 65px;
+                }
+
+                form {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                input:hover {
+                    cursor: pointer;
+                }
+
+                form div {
+                    justify-self: start;
+                    display: flex;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <h1>Bienvenido</h1>
+                <h3>Saldo : <% if(dinero == 0.0){ <%= "Oculto"%>} %></h3>
+                <br>
+                <div>
+                    <form action="Servlet" method="post">
+                        <input type="submit" value="Nuevo Yapeo" name="type">
+                        <input type="submit" value="Consultar Saldo" name="type">
+                        <input type="submit" value="Historial de Yapes" name="type">
+                        <input type="submit" value="Buscar Yape" name="type">
+                        <input type="submit" value="Cerrar Sesion" name="type">
+                    </form>
+                    <br>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>IdYape</th>
+                            <th>Numero que lo realiza</th>
+                            <th>Numero que lo recibe</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                   			<%
+								if(yapeList != null){
+									for(Yapes item : yapeList){
+							%>
+						<tr>
+							<td><%= item.getIdYape() %></td>
+							<td><%= item.getNumeroRealizante() %></td>
+							<td><%= item.getNumeroRecibiente() %></td>
+							<td><%= item.getMonto() %></td>
+							<td><%= item.getFecha() %></td>
+							<td><%= item.getHora() %></td>
+							
+						</tr>
+						<%
+									}
+								}
+							%>
+                    </tbody>
+                </table>
+            </div>
+        </body>
+
+        </html>

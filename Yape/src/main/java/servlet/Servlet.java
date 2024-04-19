@@ -25,6 +25,7 @@ public class Servlet extends HttpServlet {
 		String type = request.getParameter("type");
 		switch(type) {
 		case "Login" : loginUsuario(request, response); break;
+		case "Consultar Saldo" : consultarSaldo(request, response); break;
 		case "Historial de Yapes" : historialYapes(request, response); break;
 		case "Cerrar Sesion" : cerrarCurrentLogin(request, response); break;
 		default: 
@@ -44,6 +45,13 @@ public class Servlet extends HttpServlet {
 		} else {
 			System.out.println("Usuario/Contraseña o rol incorrecto");
 		}
+	}
+	
+	protected void consultarSaldo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		Logins saldo = metodo.consultarSaldo();
+		if(saldo != null) request.setAttribute("saldo", saldo);
+		request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 	}
 	
 	protected void historialYapes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
