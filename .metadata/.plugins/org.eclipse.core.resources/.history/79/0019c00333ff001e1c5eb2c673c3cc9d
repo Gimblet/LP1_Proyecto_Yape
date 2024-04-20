@@ -1,0 +1,39 @@
+package data;
+
+public class ClaseUtilitaria {
+	private String respuesta, nombreRecipiente, nombreRemitente;
+	private int idYape, numeroRecipiente, numeroRemitente;
+	private double montoRecipiente;
+
+	public String getRespuesta() {
+		return respuesta;
+	}
+
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
+	}
+
+	public int getNumeroRecipiente() {
+		return numeroRecipiente;
+	}
+
+	public void setNumeroRecipiente(int numeroRecipiente) {
+		this.numeroRecipiente = numeroRecipiente;
+	}
+
+	public String getNombreRecipiente() {
+		return nombreRecipiente;
+	}
+
+	public void setNombreRecipiente(String nombreRecipiente) {
+		this.nombreRecipiente = nombreRecipiente;
+	}
+
+	public double getMontoRecipiente() {
+		return montoRecipiente;
+	}
+
+	public void setMontoRecipiente(double montoRecipiente) {
+		this.montoRecipiente = montoRecipiente;
+	}
+}

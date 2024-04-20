@@ -86,9 +86,16 @@ public class Servlet extends HttpServlet {
 	}
 	
 	protected void buscarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("txtBuscar"));
+		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
+		if(dataYape.getRespuesta().equals("ID Incorrecto/Invalido")) {
+			request.setAttribute("IDInvalido", "ID Incorrecto/Invalido");
+			request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+		} 
+		request.setAttribute("infoYape", dataYape);
 		request.getRequestDispatcher("YapeInfo.jsp").forward(request, response);
 	}
-
 	
 	protected void cerrarCurrentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();

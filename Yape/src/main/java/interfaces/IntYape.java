@@ -13,6 +13,7 @@ public interface IntYape {
 	void cerrarSesion();
 	ClaseUtilitaria validarYape(int numero, double monto);
 	void yapear(int numero, double monto);
+	ClaseUtilitaria obtenerInformacionYape(int id);
 	public String formatearFecha(String OGFecha);
 	public String formatearHora(String OGHora);
 }

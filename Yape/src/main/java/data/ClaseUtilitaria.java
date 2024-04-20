@@ -1,8 +1,8 @@
 package data;
 
 public class ClaseUtilitaria {
-	private String respuesta, nombreRecipiente;
-	private int numeroRecipiente;
+	private String respuesta, nombreRecipiente, nombreRemitente, fecha, hora, estado;
+	private int idYape, numeroRecipiente, numeroRemitente;
 	private double montoRecipiente;
 
 	public String getRespuesta() {
@@ -35,5 +35,53 @@ public class ClaseUtilitaria {
 
 	public void setMontoRecipiente(double montoRecipiente) {
 		this.montoRecipiente = montoRecipiente;
+	}
+
+	public String getNombreRemitente() {
+		return nombreRemitente;
+	}
+
+	public void setNombreRemitente(String nombreRemitente) {
+		this.nombreRemitente = nombreRemitente;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public int getIdYape() {
+		return idYape;
+	}
+
+	public void setIdYape(int idYape) {
+		this.idYape = idYape;
+	}
+
+	public int getNumeroRemitente() {
+		return numeroRemitente;
+	}
+
+	public void setNumeroRemitente(int numeroRemitente) {
+		this.numeroRemitente = numeroRemitente;
 	}
 }

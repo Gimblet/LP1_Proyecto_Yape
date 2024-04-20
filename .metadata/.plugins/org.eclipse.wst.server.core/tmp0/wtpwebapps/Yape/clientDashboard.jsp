@@ -54,7 +54,14 @@
                         <input type="submit" value="Consultar Saldo" name="type">
                         <input type="submit" value="Historial de Yapes" name="type">
                         <div class="buscarContainer">
-                        	<input type="text" name="txtBuscar" placeholder="Ingresa el ID del Yape">
+                        	<input type="text" name="txtBuscar"
+                        	<% 
+                        		String IDStatus = "Ingresa el ID del Yape";
+                        		if(request.getAttribute("IDInvalido") != null) { 
+                        			IDStatus = (String) request.getAttribute("IDInvalido");
+                        		}
+                        	%>
+                        	placeholder="<%= IDStatus %>">
                         	<input type="submit" value="Buscar Yape" name="type">
                         </div>
                         <input type="submit" value="Cerrar Sesion" name="type">

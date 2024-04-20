@@ -11,9 +11,10 @@
     <fullyQualifiedTypeName name="data.Logins"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="gestion.Metodos"/>
-    <fullyQualifiedTypeName name="data.ClaseUtilitaria"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="util.MysqlConexion"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="util.MysqlConexion"/>
+    <fullyQualifiedTypeName name="gestion.Metodos"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="data.ClaseUtilitaria"/>
 </qualifiedTypeNameHistroy>

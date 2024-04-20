@@ -1,0 +1,42 @@
+<%@page import="data.ClaseUtilitaria"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<% 
+	ClaseUtilitaria item = null;
+	String status = "default";
+	if(request.getAttribute("infoYape") != null) {
+		item = (ClaseUtilitaria) request.getAttribute("infoYape");
+		status = "Todo Bien Pa";
+	} else {
+		status = "uyuyuyuyuy";
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Informacion de Yape <%= status %></title>
+</head>
+<body>
+	<form action="Servlet" method="post">
+		<div class="form-group">
+			<label class="text-secondary">ID Yape</label>
+			<input class="form-control" type="text" name="txtYapeId" value="<%= (item != null)? curso.getCod():"" %>">
+		</div>
+		<div class="form-group">
+			<label class="text-secondary">Nombre</label>
+			<input class="form-control" type="text" name="txtNombre" value="<%= (curso != null)? curso.getNombre():"" %>">
+		</div>
+		<div class="form-group">
+			<label class="text-secondary">Nivel</label>
+			<input class="form-control" type="text" name="txtNivel" value="<%= (curso != null)? curso.getNivel():"" %>">
+		</div>
+		<div class="form-group">
+			<label class="text-secondary">Docente</label>
+			<input class="form-control" type="text" name="txtDocente" value="<%= (curso != null)? curso.getDocente():"" %>">
+		</div>
+		<br>
+	</form>
+	<a href="Servlet?type=listar" class="btn btn-primary">Regresar</a>
+</body>
+</html>

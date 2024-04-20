@@ -213,6 +213,57 @@ public class Metodos implements IntYape {
 		return yapeList;
 	}
 	
+	public ClaseUtilitaria obtenerInformacionYape(int id) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		ClaseUtilitaria info = new ClaseUtilitaria();
+		try {
+			// Obtenemos todos los resultados de la tabla yapes por el id
+			con = MysqlConexion.getConexion();
+			String sql = "SELECT * FROM Yapes WHERE IdYape=? AND(NumeroRealizante=? OR NumeroRecibiente=?)";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			psm.setInt(2, obtenerUsuario());
+			psm.setInt(3, obtenerUsuario());
+			rs = psm.executeQuery();
+			if(rs.next()) {
+				info.setIdYape(rs.getInt("IdYape"));
+				info.setNumeroRemitente(rs.getInt("NumeroRealizante"));
+				info.setNumeroRecipiente(rs.getInt("NumeroRecibiente"));
+				info.setMontoRecipiente(rs.getDouble("Monto"));
+				info.setFecha(formatearFecha(rs.getString("Fecha")));
+				info.setHora(formatearHora(rs.getString("Hora")));
+				info.setRespuesta("Correcto");
+			} else { 
+				info.setRespuesta("ID Incorrecto/Invalido");
+				return info;
+			}
+			
+			// Obtenemos el nombre del remitente 
+			sql = "SELECT NombreApellidos as Nombres from logins where numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, info.getNumeroRemitente());
+			rs = psm.executeQuery();
+			if(rs.next()) info.setNombreRemitente(rs.getString("Nombres"));
+			else System.out.println("No se Encontraron nombres con el numero de remitente especificado");
+			
+			// Obtenemos el nombre del recipiente
+			sql = "SELECT NombreApellidos as Nombres from logins where numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, info.getNumeroRecipiente());
+			rs = psm.executeQuery();
+			if(rs.next()) info.setNombreRecipiente(rs.getString("Nombres"));
+			else System.out.println("No se Encontraron nombres con el numero de recipiente especificado");
+			
+			return info;
+			
+		} catch(Exception e) {
+			System.out.println("Error en el try catch de Metodos.ObtenerInformacionYape");
+		}
+		return info;
+	}
+	
 	public String formatearFecha(String OGFecha) {
 		String Fecha = OGFecha;
 		Connection con = null;
