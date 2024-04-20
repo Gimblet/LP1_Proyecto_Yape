@@ -21,6 +21,11 @@
                 .container {
                     margin: 65px;
                 }
+                
+                .buscarContainer{
+                	display: flex;
+                	gap: 12px;
+                }
 
                 form {
                     display: flex;
@@ -48,7 +53,10 @@
                         <input type="submit" value="Nuevo Yapeo" name="type">
                         <input type="submit" value="Consultar Saldo" name="type">
                         <input type="submit" value="Historial de Yapes" name="type">
-                        <input type="submit" value="Buscar Yape" name="type">
+                        <div class="buscarContainer">
+                        	<input type="text" name="txtBuscar" placeholder="Ingresa el ID del Yape">
+                        	<input type="submit" value="Buscar Yape" name="type">
+                        </div>
                         <input type="submit" value="Cerrar Sesion" name="type">
                     </form>
                     <br>

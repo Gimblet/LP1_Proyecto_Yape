@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.ClaseUtilitaria;
 import data.Logins;
 import data.Yapes;
 import interfaces.IntYape;
@@ -67,6 +68,101 @@ public class Metodos implements IntYape {
 			System.out.println("No se pudo Obtener el Usuario/No Existe");
 		}
 		return numero;
+	}
+	
+	public ClaseUtilitaria validarYape(int numero, double monto) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		ClaseUtilitaria respuesta = new ClaseUtilitaria();
+		try {
+			con = MysqlConexion.getConexion();
+			
+			// Validar Que el numero del recibiente existe
+			
+			String sql = "SELECT IF( EXISTS ( SELECT numero FROM logins WHERE numero=?), 'existe', 'noExiste') AS resultado;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numero);
+			rs = psm.executeQuery();
+			rs.next();
+			if(rs.getString("resultado").equals("noExiste")) {
+				respuesta.setRespuesta("El numero ingresado no existe");
+				return respuesta;
+			}
+			
+			// Validar Que el saldo de la cuenta es suficiente
+			
+			sql = "SELECT Saldo from logins WHERE numero=?;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, obtenerUsuario());
+			rs = psm.executeQuery();
+			rs.next();
+			if(rs.getDouble("Saldo") < monto) {
+				respuesta.setRespuesta("No hay saldo suficiente");
+				return respuesta;
+			}
+			
+			// El numero existe & Hay saldo suficiente asi que
+			// Obtiene y guarda el Nombre de Persona Recibir y los demas datos
+			
+			sql = "SELECT NombreApellidos FROM logins WHERE numero=?;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numero);
+			rs = psm.executeQuery();
+			rs.next();
+			respuesta.setNombreRecipiente(rs.getString("nombreApellidos"));	
+			respuesta.setNumeroRecipiente(numero);
+			respuesta.setMontoRecipiente(monto);
+			respuesta.setRespuesta("Datos Conformes");
+			
+		} catch(Exception e) {
+			System.out.println("Error en el bloque try catch de metodos.ValidarYape");
+		}
+		return respuesta;
+	}
+	
+	public void yapear(int numero, double monto) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "INSERT INTO Yapes(NumeroRealizante, NumeroRecibiente, Monto, Fecha, Hora) VALUES (?, ?, ?, current_date(), now());";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, obtenerUsuario());
+			psm.setInt(2, numero);
+			psm.setDouble(3, monto);
+			psm.executeUpdate();
+			
+			//Restar dinero del Yapeador
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, obtenerUsuario());
+			rs = psm.executeQuery();
+			rs.next();
+			double restaSaldo = rs.getDouble("Saldo") - monto;
+			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, restaSaldo);
+			psm.setInt(2, obtenerUsuario());
+			psm.executeUpdate();
+			
+			//Aumentar dinero del Recibiente
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numero);
+			rs = psm.executeQuery();
+			rs.next();
+			double sumaSaldo = rs.getDouble("Saldo") + monto;
+			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, sumaSaldo);
+			psm.setInt(2, numero);
+			psm.executeUpdate();
+			
+		} catch(Exception e) {
+			System.out.println("Problema en try/catch de metodos.yapear");
+		}
 	}
 	
 	public Logins consultarSaldo() {
@@ -170,6 +266,4 @@ public class Metodos implements IntYape {
 		}
 	}
 
-	
-	
 }
