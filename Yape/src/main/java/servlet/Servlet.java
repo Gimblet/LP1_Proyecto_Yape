@@ -32,6 +32,7 @@ public class Servlet extends HttpServlet {
 		case "Consultar Saldo"    : consultarSaldo(request, response); break;
 		case "Historial de Yapes" : historialYapes(request, response); break;
 		case "Buscar Yape"        : buscarYape(request, response); break;
+		case "Volver Cliente"     : request.getRequestDispatcher("clientDashboard.jsp").forward(request, response); break;
 		case "Cerrar Sesion"      : cerrarCurrentLogin(request, response); break;
 		default: 
 			cerrarCurrentLogin(request, response);
@@ -42,6 +43,7 @@ public class Servlet extends HttpServlet {
 	
 	protected void loginUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
+		metodo.cerrarSesion();
 		int numero = Integer.parseInt(request.getParameter("txtNumero")); 
 		String clave = request.getParameter("txtClave");
 		String tipoUser = request.getParameter("cboTipoUsuario");
@@ -69,7 +71,6 @@ public class Servlet extends HttpServlet {
 		metodo.yapear(numero, monto);
 		request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 	}
-
 	
 	protected void consultarSaldo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
@@ -87,7 +88,13 @@ public class Servlet extends HttpServlet {
 	
 	protected void buscarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
-		int id = Integer.parseInt(request.getParameter("txtBuscar"));
+		int id = 0;
+		if(request.getParameter("id") != null) {
+			id= Integer.parseInt(request.getParameter("id"));
+		}
+		else if(request.getParameter("txtBuscar") != null) {
+			id = Integer.parseInt(request.getParameter("txtBuscar"));
+		}
 		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
 		if(dataYape.getRespuesta().equals("ID Incorrecto/Invalido")) {
 			request.setAttribute("IDInvalido", "ID Incorrecto/Invalido");

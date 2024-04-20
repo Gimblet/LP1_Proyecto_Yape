@@ -85,7 +85,7 @@
           <children xsi:type="basic:PartSashContainer" xmi:id="_futCqPztEe66ZaCJnpwdyw" selectedElement="_Yf2eYP0xEe6YodaruF7JDg" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_Yf2eYP0xEe6YodaruF7JDg" containerData="5000" selectedElement="_futCovztEe66ZaCJnpwdyw" horizontal="true">
               <children xsi:type="advanced:Placeholder" xmi:id="_futCqfztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.editorss" containerData="5949" ref="_fleOIPztEe66ZaCJnpwdyw"/>
-              <children xsi:type="basic:PartStack" xmi:id="_futCovztEe66ZaCJnpwdyw" elementId="topLeft" containerData="4051" selectedElement="_futCuPztEe66ZaCJnpwdyw">
+              <children xsi:type="basic:PartStack" xmi:id="_futCovztEe66ZaCJnpwdyw" elementId="topLeft" containerData="4051" selectedElement="_futCsfztEe66ZaCJnpwdyw">
                 <children xsi:type="advanced:Placeholder" xmi:id="_futCo_ztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_fltesPztEe66ZaCJnpwdyw" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
@@ -240,42 +240,42 @@
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_02OeEP0xEe6YodaruF7JDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Servlet.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Servlet.java&quot; partName=&quot;Servlet.java&quot; title=&quot;Servlet.java&quot; tooltip=&quot;Yape/src/main/java/servlet/Servlet.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/java/servlet/Servlet.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4239&quot; selectionTopPixel=&quot;1209&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Servlet.java&quot; partName=&quot;Servlet.java&quot; title=&quot;Servlet.java&quot; tooltip=&quot;Yape/src/main/java/servlet/Servlet.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/java/servlet/Servlet.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1412&quot; selectionTopPixel=&quot;153&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_0UgmMP0zEe6YodaruF7JDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Metodos.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Metodos.java&quot; partName=&quot;Metodos.java&quot; title=&quot;Metodos.java&quot; tooltip=&quot;Yape/src/main/java/gestion/Metodos.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/java/gestion/Metodos.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;7894&quot; selectionTopPixel=&quot;3882&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Metodos.java&quot; partName=&quot;Metodos.java&quot; title=&quot;Metodos.java&quot; tooltip=&quot;Yape/src/main/java/gestion/Metodos.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/java/gestion/Metodos.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;7894&quot; selectionTopPixel=&quot;663&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           </children>
         </children>
-        <children xsi:type="basic:PartStack" xmi:id="_1Q5A0f0xEe6YodaruF7JDg" elementId="PartStack@7e19b6d5" containerData="5000" selectedElement="_qbPToP02Ee6YodaruF7JDg">
+        <children xsi:type="basic:PartStack" xmi:id="_1Q5A0f0xEe6YodaruF7JDg" elementId="PartStack@7e19b6d5" containerData="5000" selectedElement="_kHd-kP0tEe6YodaruF7JDg">
           <tags>active</tags>
           <children xsi:type="basic:Part" xmi:id="_kHd-kP0tEe6YodaruF7JDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Login.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;Login.jsp&quot; partName=&quot;Login.jsp&quot; title=&quot;Login.jsp&quot; tooltip=&quot;Yape/src/main/webapp/Login.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/Login.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;514&quot; selectionTopPixel=&quot;98&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_qbPToP02Ee6YodaruF7JDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="clientDashboard.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;clientDashboard.jsp&quot; partName=&quot;clientDashboard.jsp&quot; title=&quot;clientDashboard.jsp&quot; tooltip=&quot;Yape/src/main/webapp/clientDashboard.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/clientDashboard.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3143&quot; selectionTopPixel=&quot;1328&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;Login.jsp&quot; partName=&quot;Login.jsp&quot; title=&quot;Login.jsp&quot; tooltip=&quot;Yape/src/main/webapp/Login.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/Login.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;190&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
             <tags>active</tags>
             <tags>activeOnClose</tags>
           </children>
+          <children xsi:type="basic:Part" xmi:id="_qbPToP02Ee6YodaruF7JDg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="clientDashboard.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;clientDashboard.jsp&quot; partName=&quot;clientDashboard.jsp&quot; title=&quot;clientDashboard.jsp&quot; tooltip=&quot;Yape/src/main/webapp/clientDashboard.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/clientDashboard.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3143&quot; selectionTopPixel=&quot;1358&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <tags>Editor</tags>
+            <tags>removeOnHide</tags>
+            <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
+          </children>
           <children xsi:type="basic:Part" xmi:id="_JTxZsP3JEe6YhK1TfCu4rQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Yapear.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;Yapear.jsp&quot; partName=&quot;Yapear.jsp&quot; title=&quot;Yapear.jsp&quot; tooltip=&quot;Yape/src/main/webapp/Yapear.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/Yapear.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1657&quot; selectionTopPixel=&quot;323&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;Yapear.jsp&quot; partName=&quot;Yapear.jsp&quot; title=&quot;Yapear.jsp&quot; tooltip=&quot;Yape/src/main/webapp/Yapear.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/Yapear.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;430&quot; selectionTopPixel=&quot;30&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
           </children>
           <children xsi:type="basic:Part" xmi:id="_D-_ssP7iEe6TZKpt6LfBuw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="YapeInfo.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;YapeInfo.jsp&quot; partName=&quot;YapeInfo.jsp&quot; title=&quot;YapeInfo.jsp&quot; tooltip=&quot;Yape/src/main/webapp/YapeInfo.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/YapeInfo.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;293&quot; selectionTopPixel=&quot;120&quot;/>&#xD;&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;YapeInfo.jsp&quot; partName=&quot;YapeInfo.jsp&quot; title=&quot;YapeInfo.jsp&quot; tooltip=&quot;Yape/src/main/webapp/YapeInfo.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Yape/src/main/webapp/YapeInfo.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;105&quot; selectionOffset=&quot;362&quot; selectionTopPixel=&quot;8&quot;/>&#xD;&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>removeOnHide</tags>
             <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
@@ -337,7 +337,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot;>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Server</tags>
-      <tags>highlighted</tags>
       <menus xmi:id="_i1lUAPztEe66ZaCJnpwdyw" elementId="org.eclipse.wst.server.ui.ServersView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -471,7 +470,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_fgYSwPztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_zSbQ0P8lEe6UEf6Hg_37Jg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_euuzhPztEe66ZaCJnpwdyw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_vm6swP9DEe6j1fmod-GKoQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_euuzhPztEe66ZaCJnpwdyw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_fgYSwfztEe66ZaCJnpwdyw" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -508,7 +507,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_fgY51fztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_zSe7MP8lEe6UEf6Hg_37Jg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_euuMUvztEe66ZaCJnpwdyw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_vm9wEP9DEe6j1fmod-GKoQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_euuMUvztEe66ZaCJnpwdyw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_fgY51vztEe66ZaCJnpwdyw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -3078,7 +3077,7 @@
   <addons xmi:id="_et_zpvztEe66ZaCJnpwdyw" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_et_zp_ztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_euKLoPztEe66ZaCJnpwdyw" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_vXTjcP9DEe6j1fmod-GKoQ" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <categories xmi:id="_eujNMPztEe66ZaCJnpwdyw" elementId="org.eclipse.ui.category.edit" name="Edit"/>
   <categories xmi:id="_eujNMfztEe66ZaCJnpwdyw" elementId="org.eclipse.mylyn.wikitext.ui.editor.category" name="WikiText Markup Editing Commands" description="commands for editing lightweight markup"/>

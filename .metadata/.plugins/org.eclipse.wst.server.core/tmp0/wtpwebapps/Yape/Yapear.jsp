@@ -12,6 +12,7 @@
 
     <head>
         <meta charset="ISO-8859-1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <title>Nuevo Yapeo</title>
         <style>
             .container {
@@ -70,7 +71,7 @@
                     <input type="submit" name="type" value="Verificar">
                     <h3><%= respuesta %></h3>
                     <input type="submit" name="type" value="Yapear">
-                    <input type="submit" name="type" value="Cancelar">
+                    <a href="Servlet?type=Volver Cliente" class="btn btn-primary">Regresar</a>
                 </form>
             </div>
         </div>

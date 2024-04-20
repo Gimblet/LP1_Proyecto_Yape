@@ -57,6 +57,6 @@
 		</div>
 		<br>
 	</form>
-	<a href="Servlet?type=listar" class="btn btn-primary">Regresar</a>
+	<a href="Servlet?type=Volver Cliente" class="btn btn-primary">Regresar</a>
 </body>
 </html>

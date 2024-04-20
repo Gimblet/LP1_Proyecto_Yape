@@ -86,13 +86,13 @@
 									for(Yapes item : yapeList){
 							%>
 						<tr>
-							<td><%= item.getIdYape() %></td>
+							<td id="idYapeLista"><%= item.getIdYape() %></td>
 							<td><%= item.getNumeroRealizante() %></td>
 							<td><%= item.getNumeroRecibiente() %></td>
 							<td><%= item.getMonto() %></td>
 							<td><%= item.getFecha() %></td>
 							<td><%= item.getHora() %></td>
-							
+							<td><a href="Servlet?type=Buscar Yape&id=<%=item.getIdYape()%>">Mas info</a></td>
 						</tr>
 						<%
 									}
