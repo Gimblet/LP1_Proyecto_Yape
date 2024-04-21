@@ -9,7 +9,10 @@ import data.Yapes;
 public interface IntYape {
 	Logins Login(int numero, String clave, String tipoUsr);
 	List<Yapes> ListarYapes();
+	List<Yapes> ListarTodosLosYapes();
+	List<Logins> ListarUsuarios();
 	int obtenerUsuario();
+	String obtenerTipoUsuario();
 	void cerrarSesion();
 	ClaseUtilitaria validarYape(int numero, double monto);
 	void yapear(int numero, double monto);

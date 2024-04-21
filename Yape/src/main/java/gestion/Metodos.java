@@ -38,10 +38,11 @@ public class Metodos implements IntYape {
 			
 			//Set Current Login Data
 			
-			sql = "INSERT INTO CurrentUsers (Numero, NombreApellidos) VALUES(?,?)";
+			sql = "INSERT INTO CurrentUsers (Numero, NombreApellidos, TipoUsuario) VALUES(?,?,?)";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, rs.getInt("numero"));
 			psm.setString(2, rs.getString("NombreApellidos"));
+			psm.setString(3, rs.getString("TipoUsuario"));
 			psm.executeUpdate();
 			
 			return loginData;
@@ -68,6 +69,25 @@ public class Metodos implements IntYape {
 			System.out.println("No se pudo Obtener el Usuario/No Existe");
 		}
 		return numero;
+	}
+	
+	public String obtenerTipoUsuario() {
+		Connection con = null;
+		PreparedStatement psm = null;
+		String tipoUsuario = null;
+		ResultSet rs = null;
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "Select TipoUsuario from currentUsers;";
+			psm = con.prepareStatement(sql);
+			rs = psm.executeQuery();
+			rs.next();
+			tipoUsuario = rs.getString("TipoUsuario");
+			return tipoUsuario;
+		}catch(Exception e) {
+			System.out.println("No se pudo Obtener el Usuario/No Existe");
+		}
+		return tipoUsuario;
 	}
 	
 	public ClaseUtilitaria validarYape(int numero, double monto) {
@@ -127,7 +147,7 @@ public class Metodos implements IntYape {
 		ResultSet rs = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "INSERT INTO Yapes(NumeroRealizante, NumeroRecibiente, Monto, Fecha, Hora) VALUES (?, ?, ?, current_date(), now());";
+			String sql = "INSERT INTO Yapes(NumeroRealizante, NumeroRecibiente, Monto, Fecha, Hora, Estado) VALUES (?, ?, ?, current_date(), now(), 'Corriente');";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, obtenerUsuario());
 			psm.setInt(2, numero);
@@ -213,6 +233,59 @@ public class Metodos implements IntYape {
 		return yapeList;
 	}
 	
+	public List<Yapes> ListarTodosLosYapes() {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		List<Yapes> yapeList = new ArrayList<Yapes>();
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "SELECT * FROM Yapes;";
+			psm = con.prepareStatement(sql);
+			rs = psm.executeQuery();
+			while(rs.next()) {
+				Yapes yape = new Yapes();
+				yape.setIdYape(rs.getInt("IdYape"));
+				yape.setNumeroRealizante(rs.getInt("NumeroRealizante"));
+				yape.setNumeroRecibiente(rs.getInt("NumeroRecibiente"));
+				yape.setMonto(rs.getDouble("Monto"));
+				yape.setFecha(formatearFecha(rs.getString("Fecha")));
+				yape.setHora(formatearHora(rs.getString("Hora")));
+				yape.setEstado(rs.getString("Estado"));
+				yapeList.add(yape);
+			}
+		} catch(Exception e) {
+			System.out.println("Error en el Try Catch de Metodos-Listar");
+		}
+		return yapeList;
+	}
+	
+	public List<Logins> ListarUsuarios() {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		List<Logins> userList = new ArrayList<Logins>();
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "SELECT * FROM Logins WHERE TipoUsuario='Cliente';";
+			psm = con.prepareStatement(sql);
+			rs = psm.executeQuery();
+			while(rs.next()) {
+				Logins users = new Logins();
+				users.setIdUsuario(rs.getInt("IdUsuario"));
+				users.setTipoUsuario(rs.getString("TipoUsuario"));
+				users.setNombreApellidos(rs.getString("NombreApellidos"));
+				users.setSaldo(rs.getDouble("Saldo"));
+				users.setNumero(rs.getInt("Numero"));
+				users.setClave(rs.getString("Clave"));
+				userList.add(users);
+			}
+		} catch(Exception e) {
+			System.out.println("Error en el Try Catch de Metodos-Listar");
+		}
+		return userList;
+	}
+	
 	public ClaseUtilitaria obtenerInformacionYape(int id) {
 		Connection con = null;
 		PreparedStatement psm = null;
@@ -221,12 +294,25 @@ public class Metodos implements IntYape {
 		try {
 			// Obtenemos todos los resultados de la tabla yapes por el id
 			con = MysqlConexion.getConexion();
-			String sql = "SELECT * FROM Yapes WHERE IdYape=? AND(NumeroRealizante=? OR NumeroRecibiente=?)";
-			psm = con.prepareStatement(sql);
-			psm.setInt(1, id);
-			psm.setInt(2, obtenerUsuario());
-			psm.setInt(3, obtenerUsuario());
-			rs = psm.executeQuery();
+			String sql;
+			
+			// Revisa que tipo de usuario somos y hace un Query en base a eso
+			if(obtenerTipoUsuario().equals("Cliente")) {
+				sql = "SELECT * FROM Yapes WHERE IdYape=? AND(NumeroRealizante=? OR NumeroRecibiente=?)";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, id);
+				psm.setInt(2, obtenerUsuario());
+				psm.setInt(3, obtenerUsuario());
+				rs = psm.executeQuery();
+			}
+			else if(obtenerTipoUsuario().equals("Admin")) {
+				sql = "SELECT * FROM Yapes WHERE IdYape=?";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, id);
+				rs = psm.executeQuery();
+			}
+			
+			//Guarda la informacion en info de tipo clase utilitaria
 			if(rs.next()) {
 				info.setIdYape(rs.getInt("IdYape"));
 				info.setNumeroRemitente(rs.getInt("NumeroRealizante"));
@@ -316,5 +402,6 @@ public class Metodos implements IntYape {
 			System.out.println("Error En el Bloque Try Catch Cerrar Sesion");
 		}
 	}
+
 
 }

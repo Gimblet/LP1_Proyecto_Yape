@@ -3,7 +3,7 @@ package data;
 public class Yapes {
 	private int IdYape, NumeroRealizante, NumeroRecibiente;
 	private double Monto;
-	private String Fecha, Hora;
+	private String Fecha, Hora, Estado;
 	
 	public int getIdYape() {
 		return IdYape;
@@ -40,5 +40,11 @@ public class Yapes {
 	}
 	public void setHora(String hora) {
 		Hora = hora;
+	}
+	public String getEstado() {
+		return Estado;
+	}
+	public void setEstado(String estado) {
+		Estado = estado;
 	}
 }

@@ -31,8 +31,11 @@ public class Servlet extends HttpServlet {
 		case "Yapear"             : yapear(request, response); break;
 		case "Consultar Saldo"    : consultarSaldo(request, response); break;
 		case "Historial de Yapes" : historialYapes(request, response); break;
+		case "Mostrar Yapes"      : mostrarTodosLosYapes(request,response); break;
+		case "Mostrar Usuarios"   : mostrarUsuarios(request, response); break;
 		case "Buscar Yape"        : buscarYape(request, response); break;
-		case "Volver Cliente"     : request.getRequestDispatcher("clientDashboard.jsp").forward(request, response); break;
+		case "Editar Yape"        : editarYape(request, response); break;
+		case "Volver"             : volver(request, response); break;
 		case "Cerrar Sesion"      : cerrarCurrentLogin(request, response); break;
 		default: 
 			cerrarCurrentLogin(request, response);
@@ -49,7 +52,9 @@ public class Servlet extends HttpServlet {
 		String tipoUser = request.getParameter("cboTipoUsuario");
 		Logins isUser = metodo.Login(numero, clave, tipoUser);
 		if(isUser != null) {
-			request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+			if(isUser.getTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+			if(isUser.getTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+			if(isUser.getTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("hAdminDashboard.jsp").forward(request, response);
 		} else {
 			System.out.println("Usuario/Contraseña o rol incorrecto");
 		}
@@ -86,6 +91,20 @@ public class Servlet extends HttpServlet {
 		request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 	}
 	
+	protected void mostrarTodosLosYapes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		List<Yapes> yapeList = metodo.ListarTodosLosYapes();
+		request.setAttribute("ListaYapes", yapeList);
+		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+	}
+	
+	protected void mostrarUsuarios(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		List<Logins> userList = metodo.ListarUsuarios();
+		request.setAttribute("ListaUsuarios", userList);
+		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+	}
+	
 	protected void buscarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		int id = 0;
@@ -98,12 +117,24 @@ public class Servlet extends HttpServlet {
 		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
 		if(dataYape.getRespuesta().equals("ID Incorrecto/Invalido")) {
 			request.setAttribute("IDInvalido", "ID Incorrecto/Invalido");
-			request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+			if(metodo.obtenerTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+			else if(metodo.obtenerTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
 		} 
 		request.setAttribute("infoYape", dataYape);
 		request.getRequestDispatcher("YapeInfo.jsp").forward(request, response);
 	}
 	
+	protected void editarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("EditarYape.jsp").forward(request, response);
+	}
+
+	
+	protected void volver(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		if(metodo.obtenerTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+		if(metodo.obtenerTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+	}
+
 	protected void cerrarCurrentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		metodo.cerrarSesion();

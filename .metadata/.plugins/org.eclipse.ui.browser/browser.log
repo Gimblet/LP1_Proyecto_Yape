@@ -845,3 +845,89 @@ abr. 20, 2024 16:41:33.630 console.error: "C:\\Users\\dvill\\AppData\\Local\\Moz
 abr. 20, 2024 16:41:33.631 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-20-21-41-33.purge.bg_rm"
 abr. 20, 2024 16:41:33.650 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-20-21-41-33.purge.bg_rm. removed 95 entries."
 abr. 20, 2024 16:41:33.652 console.warn: "Skipping Glean as no metrics id is passed"
+
+abr. 20, 2024 18:05:12.375 NEW SESSION
+abr. 20, 2024 18:05:12.375 *** You are running in background task mode. ***
+abr. 20, 2024 18:05:12.376 *** You are running in headless mode.
+abr. 20, 2024 18:05:12.565 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 20, 2024 18:05:12.566 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 18:06:43.808 *** You are running in background task mode. ***
+abr. 20, 2024 18:06:43.808 *** You are running in headless mode.
+abr. 20, 2024 18:06:43.886 *** You are running in background task mode. ***
+abr. 20, 2024 18:06:43.886 *** You are running in headless mode.
+abr. 20, 2024 18:06:43.999 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+abr. 20, 2024 18:06:44.01 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 18:06:44.01 console.error: BackgroundTasksManager: 
+abr. 20, 2024 18:06:44.01   Backgroundtask named 'removeDirectory' threw exception
+abr. 20, 2024 18:06:44.01   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+abr. 20, 2024 18:06:44.01   Stack:
+abr. 20, 2024 18:06:44.01     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+abr. 20, 2024 18:06:44.01 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+abr. 20, 2024 18:06:44.02 
+abr. 20, 2024 18:06:44.65 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-04-20-23-06-43.purge.bg_rm" 10 ".purge.bg_rm" ""
+abr. 20, 2024 18:06:44.66 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-20-23-06-43.purge.bg_rm"
+abr. 20, 2024 18:06:44.68 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-20-23-06-43.purge.bg_rm. removed 19 entries."
+abr. 20, 2024 18:06:44.69 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 18:21:00.506 *** You are running in background task mode. ***
+abr. 20, 2024 18:21:00.506 *** You are running in headless mode.
+abr. 20, 2024 18:21:00.683 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 20, 2024 18:21:00.684 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:41:13.887 *** You are running in background task mode. ***
+abr. 20, 2024 19:41:13.888 *** You are running in headless mode.
+abr. 20, 2024 19:41:13.940 *** You are running in background task mode. ***
+abr. 20, 2024 19:41:13.940 *** You are running in headless mode.
+abr. 20, 2024 19:41:14.65 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+abr. 20, 2024 19:41:14.66 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:41:14.66 console.error: BackgroundTasksManager: 
+abr. 20, 2024 19:41:14.67   Backgroundtask named 'removeDirectory' threw exception
+abr. 20, 2024 19:41:14.67   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+abr. 20, 2024 19:41:14.67   Stack:
+abr. 20, 2024 19:41:14.68     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+abr. 20, 2024 19:41:14.68 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+abr. 20, 2024 19:41:14.68 
+abr. 20, 2024 19:41:14.129 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-04-21-00-41-13.purge.bg_rm" 10 ".purge.bg_rm" ""
+abr. 20, 2024 19:41:14.131 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-00-41-13.purge.bg_rm"
+abr. 20, 2024 19:41:14.138 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-00-41-13.purge.bg_rm. removed 35 entries."
+abr. 20, 2024 19:41:14.138 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:41:22.06 *** You are running in background task mode. ***
+abr. 20, 2024 19:41:22.07 *** You are running in headless mode.
+abr. 20, 2024 19:41:22.189 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 20, 2024 19:41:22.190 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:42:36.965 *** You are running in background task mode. ***
+abr. 20, 2024 19:42:36.966 *** You are running in headless mode.
+abr. 20, 2024 19:42:37.41 *** You are running in background task mode. ***
+abr. 20, 2024 19:42:37.42 *** You are running in headless mode.
+abr. 20, 2024 19:42:37.135 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+abr. 20, 2024 19:42:37.136 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:42:37.136 console.error: BackgroundTasksManager: 
+abr. 20, 2024 19:42:37.136   Backgroundtask named 'removeDirectory' threw exception
+abr. 20, 2024 19:42:37.137   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+abr. 20, 2024 19:42:37.137   Stack:
+abr. 20, 2024 19:42:37.137     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+abr. 20, 2024 19:42:37.137 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+abr. 20, 2024 19:42:37.137 
+abr. 20, 2024 19:42:37.228 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-04-21-00-42-36.purge.bg_rm" 10 ".purge.bg_rm" ""
+abr. 20, 2024 19:42:37.229 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-00-42-36.purge.bg_rm"
+abr. 20, 2024 19:42:37.232 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-00-42-36.purge.bg_rm. removed 16 entries."
+abr. 20, 2024 19:42:37.233 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 19:47:04.417 *** You are running in background task mode. ***
+abr. 20, 2024 19:47:04.417 *** You are running in headless mode.
+abr. 20, 2024 19:47:04.602 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 20, 2024 19:47:04.603 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 20:49:20.127 *** You are running in background task mode. ***
+abr. 20, 2024 20:49:20.127 *** You are running in headless mode.
+abr. 20, 2024 20:49:20.138 *** You are running in background task mode. ***
+abr. 20, 2024 20:49:20.139 *** You are running in headless mode.
+abr. 20, 2024 20:49:20.337 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+abr. 20, 2024 20:49:20.337 console.warn: "Skipping Glean as no metrics id is passed"
+abr. 20, 2024 20:49:20.338 console.error: BackgroundTasksManager: 
+abr. 20, 2024 20:49:20.338   Backgroundtask named 'removeDirectory' threw exception
+abr. 20, 2024 20:49:20.339   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+abr. 20, 2024 20:49:20.339   Stack:
+abr. 20, 2024 20:49:20.339     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+abr. 20, 2024 20:49:20.341 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+abr. 20, 2024 20:49:20.341 
+abr. 20, 2024 20:49:20.352 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-04-21-01-49-20.purge.bg_rm" 10 ".purge.bg_rm" ""
+abr. 20, 2024 20:49:20.356 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-01-49-20.purge.bg_rm"
+abr. 20, 2024 20:49:20.368 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-21-01-49-20.purge.bg_rm. removed 34 entries."
+abr. 20, 2024 20:49:20.370 console.warn: "Skipping Glean as no metrics id is passed"

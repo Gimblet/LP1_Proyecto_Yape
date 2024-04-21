@@ -16,7 +16,8 @@ CREATE TABLE Logins(
 
 CREATE TABLE CurrentUsers(
 	Numero          INT(9) PRIMARY KEY,
-	NombreApellidos VARCHAR(100)
+	NombreApellidos VARCHAR(100),
+    TipoUsuario     VARCHAR(10)
 );
 
 CREATE TABLE Yapes(
