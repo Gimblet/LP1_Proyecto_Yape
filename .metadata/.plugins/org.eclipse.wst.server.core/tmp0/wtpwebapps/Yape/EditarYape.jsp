@@ -12,51 +12,55 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<title>Informacion de Yape</title>
+	<style>
+		.noEditables{
+			display: flex;
+			flex-direction: column;
+			gap : 3px;
+			margin: 13px;
+		}
+	</style>
+	<title>Editar Yape</title>
 </head>
 <body>
 	<form action="Servlet" method="post">
-		<div class="form-group">
-			<label class="text-secondary">ID Yape</label>
-			<input class="form-control" type="text" name="txtYapeId" value="<%= (item != null)? item.getIdYape():"" %>">
+		<div class="noEditables">
+			<div class="form-group">
+				<label class="text-secondary">ID Yape : <strong><%= (item != null)? item.getIdYape():"" %></strong></label>
+				<input type="hidden" name="YapeId" value="<%= item.getIdYape() %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Numero del Remitente : <strong><%= (item != null)? item.getNumeroRemitente():"" %></strong></label>
+				<input type="hidden" name="txtNumeroRemitente" value="<%= (item != null)? item.getNumeroRemitente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Nombre del Remitente : <strong><%= (item != null)? item.getNombreRemitente():"" %></strong></label>
+				<input type="hidden" name="txtNombreRemitente" value="<%= (item != null)? item.getNombreRemitente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Nombre del Recipiente : <strong><%= (item != null)? item.getNombreRecipiente():"" %></strong></label>
+				<input class="form-control" type="hidden" name="txtNombreRecipiente" value="<%= (item != null)? item.getNombreRecipiente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Estado : <strong><%= (item != null)? item.getEstado():"" %></strong></label>
+			</div>
 		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Numero del Remitente</label>
-			<input class="form-control" type="text" name="txtNumeroRemitente" value="<%= (item != null)? item.getNumeroRemitente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Nombre del Remitente</label>
-			<input class="form-control" type="text" name="txtNombreRemitente" value="<%= (item != null)? item.getNombreRemitente():"" %>">
-		</div>
-		<br>
 		<div class="form-group">
 			<label class="text-secondary">Numero del Recipiente</label>
 			<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getNumeroRecipiente():"" %>">
 		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Nombre del Recipiente</label>
-			<input class="form-control" type="text" name="txtNombreRecipiente" value="<%= (item != null)? item.getNombreRecipiente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Fecha</label>
-			<input class="form-control" type="text" name="txtFecha" value="<%= (item != null)? item.getFecha():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Hora</label>
-			<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getHora():"" %>">
-		</div>
-		<br>
 		<div class="form-group">
 			<label class="text-secondary">Monto</label>
-			<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
+			<input class="form-control" type="text" name="txtMonto" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
+			<input type="hidden" name="txtMontoAntiguo" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
 		</div>
 		<br>
+		<h6>Al momento de confirmar los cambios, se aplicará por defecto la Fecha y Hora actual. <br> 
+		De igual manera el estado cambiará de CORRIENTE a MODIFICADO <br>
+		Esta ACCIÓN es IRREVERSIBLE, proceder con precaución.</h6>
+		<input type="submit" name="type" value="Editar Yape" >
+		<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
 	</form>
-	<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
+	
 </body>
 </html>

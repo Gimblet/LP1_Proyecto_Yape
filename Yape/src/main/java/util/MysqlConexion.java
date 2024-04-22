@@ -22,4 +22,13 @@ public class MysqlConexion {
 		}
 		return con;
 	}
+	
+	public static void closeConnection(Connection con) {
+		try {
+			con.close();
+		} catch(SQLException e) {
+			System.out.println("Problemas al cerrar la conexion");
+			e.printStackTrace();
+		}
+	}
 }

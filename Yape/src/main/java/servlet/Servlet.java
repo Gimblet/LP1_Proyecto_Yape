@@ -25,18 +25,21 @@ public class Servlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
 		switch(type) {
-		case "Login"              : loginUsuario(request, response); break;
-		case "Nuevo Yapeo"        : request.getRequestDispatcher("Yapear.jsp").forward(request, response); break;
-		case "Verificar"          : verificarNumero(request, response); break;
-		case "Yapear"             : yapear(request, response); break;
-		case "Consultar Saldo"    : consultarSaldo(request, response); break;
-		case "Historial de Yapes" : historialYapes(request, response); break;
-		case "Mostrar Yapes"      : mostrarTodosLosYapes(request,response); break;
-		case "Mostrar Usuarios"   : mostrarUsuarios(request, response); break;
-		case "Buscar Yape"        : buscarYape(request, response); break;
-		case "Editar Yape"        : editarYape(request, response); break;
-		case "Volver"             : volver(request, response); break;
-		case "Cerrar Sesion"      : cerrarCurrentLogin(request, response); break;
+		case "Login"                   : loginUsuario(request, response); break;
+		case "Nuevo Yapeo"             : request.getRequestDispatcher("Yapear.jsp").forward(request, response); break;
+		case "Verificar"               : verificarNumero(request, response); break;
+		case "Yapear"                  : yapear(request, response); break;
+		case "Consultar Saldo"         : consultarSaldo(request, response); break;
+		case "Historial de Yapes"      : historialYapes(request, response); break;
+		case "Mostrar Yapes"           : mostrarTodosLosYapes(request,response); break;
+		case "Mostrar Usuarios"        : mostrarUsuarios(request, response); break;
+		case "Buscar Yape"             : buscarYape(request, response); break;
+		case "Buscar Yape a Editar"    : buscarYapeEditar(request, response); break;
+		case "Editar Yape"             : editarYape(request, response); break;
+		case "Eliminar Yape"           : eliminarYape(request, response); break;
+		case "Buscar Usuario a Editar" : buscarUsuarioEditar(request, response); break;
+		case "Volver"                  : volver(request, response); break;
+		case "Cerrar Sesion"           : cerrarCurrentLogin(request, response); break;
 		default: 
 			cerrarCurrentLogin(request, response);
 			request.setAttribute("Mensaje", "Ocurrió un Problema con el Type");
@@ -54,7 +57,7 @@ public class Servlet extends HttpServlet {
 		if(isUser != null) {
 			if(isUser.getTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 			if(isUser.getTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
-			if(isUser.getTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("hAdminDashboard.jsp").forward(request, response);
+			if(isUser.getTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 		} else {
 			System.out.println("Usuario/Contraseña o rol incorrecto");
 		}
@@ -80,7 +83,7 @@ public class Servlet extends HttpServlet {
 	protected void consultarSaldo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		Logins saldo = metodo.consultarSaldo();
-		if(saldo != null) request.setAttribute("saldo", saldo);
+		request.setAttribute("saldo", saldo);
 		request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 	}
 	
@@ -102,7 +105,8 @@ public class Servlet extends HttpServlet {
 		Metodos metodo = new Metodos();
 		List<Logins> userList = metodo.ListarUsuarios();
 		request.setAttribute("ListaUsuarios", userList);
-		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+		if(metodo.obtenerTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+		if(metodo.obtenerTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 	}
 	
 	protected void buscarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -124,8 +128,56 @@ public class Servlet extends HttpServlet {
 		request.getRequestDispatcher("YapeInfo.jsp").forward(request, response);
 	}
 	
-	protected void editarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void buscarYapeEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("id"));
+		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
+		request.setAttribute("infoYape", dataYape);
 		request.getRequestDispatcher("EditarYape.jsp").forward(request, response);
+	}
+	
+	protected void buscarUsuarioEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("id"));
+		Logins dataUsuario = metodo.obtenerInformacionUsuario(id);
+		request.setAttribute("infoUsuario", dataUsuario);
+		request.getRequestDispatcher("EditarUsuario.jsp").forward(request, response);
+	}
+	
+	protected void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("YapeId"));
+		int numeroRec = Integer.parseInt(request.getParameter("txtNumeroRecipiente"));
+		int numeroRem = Integer.parseInt(request.getParameter("txtNumeroRemitente"));
+		double monto = Double.parseDouble(request.getParameter("txtMonto"));
+		double OGmonto = Double.parseDouble(request.getParameter("txtMontoAntiguo"));
+		metodo.editarUsuario(id, numeroRec, numeroRem, monto, OGmonto);
+		request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response); //FALTA
+	}
+	
+	protected void editarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Validacion del Yape
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("YapeId"));
+		int numeroRec = Integer.parseInt(request.getParameter("txtNumeroRecipiente"));
+		int numeroRem = Integer.parseInt(request.getParameter("txtNumeroRemitente"));
+		double monto = Double.parseDouble(request.getParameter("txtMonto"));
+		double OGmonto = Double.parseDouble(request.getParameter("txtMontoAntiguo"));
+		
+		if(metodo.validarYapeEditar(numeroRec, numeroRem, monto)) {
+			metodo.editarYape(id, numeroRec, numeroRem, monto, OGmonto);
+		}
+		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+	}
+	
+	protected void eliminarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("id"));
+		int numeroRec = Integer.parseInt(request.getParameter("numeroRec"));
+		int numeroRem = Integer.parseInt(request.getParameter("numeroRem"));
+		double OGmonto = Double.parseDouble(request.getParameter("monto"));
+		metodo.eliminarYape(id, numeroRec, numeroRem, OGmonto);
+		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
 	}
 
 	
@@ -133,6 +185,9 @@ public class Servlet extends HttpServlet {
 		Metodos metodo = new Metodos();
 		if(metodo.obtenerTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 		if(metodo.obtenerTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+		else {
+			request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
+		}
 	}
 
 	protected void cerrarCurrentLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

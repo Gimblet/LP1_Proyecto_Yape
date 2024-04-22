@@ -35,21 +35,28 @@ public class Metodos implements IntYape {
 			loginData.setClave(rs.getString("clave"));
 			loginData.setTipoUsuario(rs.getString("TipoUsuario"));
 			loginData.setNombreApellidos(rs.getString("NombreApellidos"));
+			psm.close();
+			rs.close();
 			
 			//Set Current Login Data
-			
 			sql = "INSERT INTO CurrentUsers (Numero, NombreApellidos, TipoUsuario) VALUES(?,?,?)";
 			psm = con.prepareStatement(sql);
-			psm.setInt(1, rs.getInt("numero"));
-			psm.setString(2, rs.getString("NombreApellidos"));
-			psm.setString(3, rs.getString("TipoUsuario"));
+			psm.setInt(1, loginData.getNumero());
+			psm.setString(2, loginData.getNombreApellidos());
+			psm.setString(3, loginData.getTipoUsuario());
 			psm.executeUpdate();
-			
-			return loginData;
 		} catch(Exception e) {
 			System.out.println("Error en el bloque Try Catch de Metodos-Login");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return loginData;
 	}
 	
 	public int obtenerUsuario() {
@@ -64,9 +71,16 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			numero = rs.getInt("numero");
-			return numero;
 		}catch(Exception e) {
 			System.out.println("No se pudo Obtener el Usuario/No Existe");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return numero;
 	}
@@ -74,8 +88,8 @@ public class Metodos implements IntYape {
 	public String obtenerTipoUsuario() {
 		Connection con = null;
 		PreparedStatement psm = null;
-		String tipoUsuario = null;
 		ResultSet rs = null;
+		String tipoUsuario = null;
 		try {
 			con = MysqlConexion.getConexion();
 			String sql = "Select TipoUsuario from currentUsers;";
@@ -83,23 +97,28 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			tipoUsuario = rs.getString("TipoUsuario");
-			return tipoUsuario;
-		}catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println("No se pudo Obtener el Usuario/No Existe");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return tipoUsuario;
 	}
 	
-	public ClaseUtilitaria validarYape(int numero, double monto) {
+	public ClaseUtilitaria validarYape(int numero, double monto) { //MAYBE
 		Connection con = null;
 		PreparedStatement psm = null;
 		ResultSet rs = null;
 		ClaseUtilitaria respuesta = new ClaseUtilitaria();
 		try {
 			con = MysqlConexion.getConexion();
-			
-			// Validar Que el numero del recibiente existe
-			
+			// Validar Que el numero del recibiente existe		
 			String sql = "SELECT IF( EXISTS ( SELECT numero FROM logins WHERE numero=?), 'existe', 'noExiste') AS resultado;";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, numero);
@@ -108,10 +127,9 @@ public class Metodos implements IntYape {
 			if(rs.getString("resultado").equals("noExiste")) {
 				respuesta.setRespuesta("El numero ingresado no existe");
 				return respuesta;
-			}
+			} psm.close(); rs.close();
 			
-			// Validar Que el saldo de la cuenta es suficiente
-			
+			// Validar Que el saldo de la cuenta es suficiente		
 			sql = "SELECT Saldo from logins WHERE numero=?;";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, obtenerUsuario());
@@ -120,11 +138,9 @@ public class Metodos implements IntYape {
 			if(rs.getDouble("Saldo") < monto) {
 				respuesta.setRespuesta("No hay saldo suficiente");
 				return respuesta;
-			}
+			} psm.close(); rs.close();
 			
-			// El numero existe & Hay saldo suficiente asi que
-			// Obtiene y guarda el Nombre de Persona Recibir y los demas datos
-			
+			// Obtiene y guarda el Nombre de Persona Recibir y los demas datos	
 			sql = "SELECT NombreApellidos FROM logins WHERE numero=?;";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, numero);
@@ -137,8 +153,311 @@ public class Metodos implements IntYape {
 			
 		} catch(Exception e) {
 			System.out.println("Error en el bloque try catch de metodos.ValidarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return respuesta;
+	}
+	
+	public boolean validarYapeEditar(int numeroRec, int numeroRem, double monto) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		boolean respuesta = false;
+		try {
+			con = MysqlConexion.getConexion();
+			// Validar Que el numero del recibiente existe
+			String sql = "SELECT IF( EXISTS ( SELECT numero FROM logins WHERE numero=?), 'existe', 'noExiste') AS resultado;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRec);
+			rs = psm.executeQuery();
+			rs.next();
+			if(rs.getString("resultado").equals("noExiste")) {
+				System.out.println("El numero ingresado no existe al intentar editar");
+				return respuesta;
+			} psm.close(); rs.close();
+			
+			// Validar Que el saldo de la cuenta es suficiente
+			sql = "SELECT Saldo from logins WHERE numero=?;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRem);
+			rs = psm.executeQuery();
+			rs.next();
+			if(rs.getDouble("Saldo") < monto) {
+				System.out.println("No hubo saldo suficiente al intentar editar");
+				return respuesta;
+			}
+			respuesta = true;
+			
+		} catch(Exception e) {
+			System.out.println("Error en el bloque try catch de metodos.ValidarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return respuesta;
+	}
+	
+	public void editarYape(int id, int numeroRec, int numeroRem, double monto, double OGmonto) { //MAYBE
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		String sql = null;
+		double nuevoSaldo = 0;
+		try {
+			con = MysqlConexion.getConexion();
+			//Balancear el dinero del receptor
+			sql = "SELECT NumeroRecibiente AS Rec FROM Yapes WHERE IdYape=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			rs = psm.executeQuery();
+			rs.next();
+			int OGNumber = rs.getInt("Rec");
+			psm.close(); rs.close();
+			
+			//Caso Mismo numero (El saldo puede disminuir o Subir)
+			if(OGNumber == numeroRec) {
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, numeroRec);
+				rs = psm.executeQuery();
+				rs.next();
+				double residuoMonto = monto - OGmonto;
+				if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
+				else nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+				psm.close(); rs.close();
+				
+				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setDouble(1, nuevoSaldo);
+				psm.setInt(2, numeroRec);
+				psm.executeUpdate();
+				psm.close();
+			}
+			
+			//Caso Numero Diferente (El saldo solo puede aumentar)
+			else if(OGNumber != numeroRec){
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, numeroRec);
+				rs = psm.executeQuery();
+				rs.next();
+				nuevoSaldo = rs.getDouble("Saldo") + monto;
+				psm.close(); rs.close();
+				
+				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setDouble(1, nuevoSaldo);
+				psm.setInt(2, numeroRec);
+				psm.executeUpdate();
+				psm.close();
+			}
+			
+			//Balancear el saldo del Remitente
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRem);
+			rs = psm.executeQuery();
+			rs.next();
+			double residuoMonto = monto - OGmonto;
+			if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+			else nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
+			psm.close(); rs.close();
+			
+			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, nuevoSaldo);
+			psm.setInt(2, numeroRem);
+			psm.executeUpdate();
+			psm.close(); rs.close();
+			
+			//Actualizar Tabla Yapes
+			sql = "UPDATE Yapes SET NumeroRecibiente=?, Monto=?, Fecha=current_date(), Hora=now(), Estado='Modificado' WHERE IdYape=?;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRec);
+			psm.setDouble(2, monto);
+			psm.setInt(3, id);
+			psm.executeUpdate();	
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Problema en try/catch de metodos.editarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//FALTA
+	public void editarUsuario(int id, int numeroRec, int numeroRem, double monto, double OGmonto) { //MAYBE
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		String sql = null;
+		double nuevoSaldo = 0;
+		try {
+			con = MysqlConexion.getConexion();
+			//Balancear el dinero del receptor
+			sql = "SELECT NumeroRecibiente AS Rec FROM Yapes WHERE IdYape=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			rs = psm.executeQuery();
+			rs.next();
+			int OGNumber = rs.getInt("Rec");
+			psm.close(); rs.close();
+			
+			//Caso Mismo numero (El saldo puede disminuir o Subir)
+			if(OGNumber == numeroRec) {
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, numeroRec);
+				rs = psm.executeQuery();
+				rs.next();
+				double residuoMonto = monto - OGmonto;
+				if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
+				else nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+				psm.close(); rs.close();
+				
+				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setDouble(1, nuevoSaldo);
+				psm.setInt(2, numeroRec);
+				psm.executeUpdate();
+				psm.close();
+			}
+			
+			//Caso Numero Diferente (El saldo solo puede aumentar)
+			else if(OGNumber != numeroRec){
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setInt(1, numeroRec);
+				rs = psm.executeQuery();
+				rs.next();
+				nuevoSaldo = rs.getDouble("Saldo") + monto;
+				psm.close(); rs.close();
+				
+				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+				psm = con.prepareStatement(sql);
+				psm.setDouble(1, nuevoSaldo);
+				psm.setInt(2, numeroRec);
+				psm.executeUpdate();
+				psm.close();
+			}
+			
+			//Balancear el saldo del Remitente
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRem);
+			rs = psm.executeQuery();
+			rs.next();
+			double residuoMonto = monto - OGmonto;
+			if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+			else nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
+			psm.close(); rs.close();
+			
+			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, nuevoSaldo);
+			psm.setInt(2, numeroRem);
+			psm.executeUpdate();
+			psm.close(); rs.close();
+			
+			//Actualizar Tabla Yapes
+			sql = "UPDATE Yapes SET NumeroRecibiente=?, Monto=?, Fecha=current_date(), Hora=now(), Estado='Modificado' WHERE IdYape=?;";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRec);
+			psm.setDouble(2, monto);
+			psm.setInt(3, id);
+			psm.executeUpdate();	
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Problema en try/catch de metodos.editarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void eliminarYape(int id, int numeroRec, int numeroRem, double OGmonto) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		try {
+			//Elimina la transaccion
+			con = MysqlConexion.getConexion();
+			String sql = "DELETE FROM Yapes WHERE IdYape=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			psm.executeUpdate();
+			psm.close();
+			
+			//Devuelve del saldo al remitente
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRem);
+			rs = psm.executeQuery();
+			rs.next();
+			Double saldo = rs.getDouble("Saldo");
+			psm.close(); rs.close();
+			
+			sql="UPDATE Logins SET Saldo=? WHERE numero=?";
+			saldo = saldo + OGmonto;
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, saldo);
+			psm.setInt(2, numeroRem);
+			psm.executeUpdate();
+			psm.close();
+			
+			//Quita el saldo previamente añadido al receptor
+			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numeroRec);
+			rs = psm.executeQuery();
+			rs.next();
+			saldo = rs.getDouble("Saldo");
+			psm.close(); rs.close();
+			
+			sql="UPDATE Logins SET Saldo=? WHERE numero=?";
+			saldo = saldo - OGmonto;
+			psm = con.prepareStatement(sql);
+			psm.setDouble(1, saldo);
+			psm.setInt(2, numeroRec);
+			psm.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Problema en try/catch de metodos.eliminarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void yapear(int numero, double monto) {
@@ -153,6 +472,7 @@ public class Metodos implements IntYape {
 			psm.setInt(2, numero);
 			psm.setDouble(3, monto);
 			psm.executeUpdate();
+			psm.close(); 
 			
 			//Restar dinero del Yapeador
 			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
@@ -161,11 +481,14 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			double restaSaldo = rs.getDouble("Saldo") - monto;
+			psm.close(); rs.close();
+			
 			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
 			psm = con.prepareStatement(sql);
 			psm.setDouble(1, restaSaldo);
 			psm.setInt(2, obtenerUsuario());
 			psm.executeUpdate();
+			psm.close();
 			
 			//Aumentar dinero del Recibiente
 			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
@@ -174,6 +497,8 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			double sumaSaldo = rs.getDouble("Saldo") + monto;
+			psm.close(); rs.close();
+			
 			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
 			psm = con.prepareStatement(sql);
 			psm.setDouble(1, sumaSaldo);
@@ -182,6 +507,14 @@ public class Metodos implements IntYape {
 			
 		} catch(Exception e) {
 			System.out.println("Problema en try/catch de metodos.yapear");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -198,11 +531,18 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			saldo.setSaldo(rs.getDouble("Saldo"));
-			return saldo;
 		} catch(Exception e) {
 			System.out.println("Problema en metodos.consultarSaldo");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return saldo;
 	}
 	
 	public List<Yapes> ListarYapes() {
@@ -229,6 +569,14 @@ public class Metodos implements IntYape {
 			}
 		} catch(Exception e) {
 			System.out.println("Error en el Try Catch de Metodos-Listar");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return yapeList;
 	}
@@ -256,6 +604,14 @@ public class Metodos implements IntYape {
 			}
 		} catch(Exception e) {
 			System.out.println("Error en el Try Catch de Metodos-Listar");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return yapeList;
 	}
@@ -265,9 +621,11 @@ public class Metodos implements IntYape {
 		PreparedStatement psm = null;
 		ResultSet rs = null;
 		List<Logins> userList = new ArrayList<Logins>();
+		String sql = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "SELECT * FROM Logins WHERE TipoUsuario='Cliente';";
+			if(obtenerTipoUsuario().equals("Admin"))  sql = "SELECT * FROM Logins WHERE TipoUsuario='Cliente';";
+			else if(obtenerTipoUsuario().equals("HeadAdmin"))  sql = "SELECT * FROM Logins WHERE TipoUsuario='Cliente' OR TipoUsuario='Admin';";
 			psm = con.prepareStatement(sql);
 			rs = psm.executeQuery();
 			while(rs.next()) {
@@ -282,6 +640,14 @@ public class Metodos implements IntYape {
 			}
 		} catch(Exception e) {
 			System.out.println("Error en el Try Catch de Metodos-Listar");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return userList;
 	}
@@ -304,7 +670,8 @@ public class Metodos implements IntYape {
 				psm.setInt(2, obtenerUsuario());
 				psm.setInt(3, obtenerUsuario());
 				rs = psm.executeQuery();
-			}
+			} 
+			
 			else if(obtenerTipoUsuario().equals("Admin")) {
 				sql = "SELECT * FROM Yapes WHERE IdYape=?";
 				psm = con.prepareStatement(sql);
@@ -320,32 +687,78 @@ public class Metodos implements IntYape {
 				info.setMontoRecipiente(rs.getDouble("Monto"));
 				info.setFecha(formatearFecha(rs.getString("Fecha")));
 				info.setHora(formatearHora(rs.getString("Hora")));
+				info.setEstado(rs.getString("Estado"));
 				info.setRespuesta("Correcto");
 			} else { 
 				info.setRespuesta("ID Incorrecto/Invalido");
+				psm.close(); rs.close();
 				return info;
 			}
+			psm.close(); rs.close();
 			
-			// Obtenemos el nombre del remitente 
+			// Obtener el nombre del remitente 
 			sql = "SELECT NombreApellidos as Nombres from logins where numero=?";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, info.getNumeroRemitente());
 			rs = psm.executeQuery();
 			if(rs.next()) info.setNombreRemitente(rs.getString("Nombres"));
-			else System.out.println("No se Encontraron nombres con el numero de remitente especificado");
+			else System.out.println("No se Encontraron nombres con el numero de remitente especificado"); // TODO cambiar por info.set Repuesta Usuario no encontrado/Eliminado
+			psm.close(); rs.close();
 			
-			// Obtenemos el nombre del recipiente
+			// Obtener el nombre del recipiente
 			sql = "SELECT NombreApellidos as Nombres from logins where numero=?";
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, info.getNumeroRecipiente());
 			rs = psm.executeQuery();
 			if(rs.next()) info.setNombreRecipiente(rs.getString("Nombres"));
-			else System.out.println("No se Encontraron nombres con el numero de recipiente especificado");
-			
-			return info;
+			else System.out.println("No se Encontraron nombres con el numero de recipiente especificado"); // TODO cambiar por info.set Repuesta Usuario no encontrado/Eliminado
 			
 		} catch(Exception e) {
 			System.out.println("Error en el try catch de Metodos.ObtenerInformacionYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return info;
+	}
+	
+	public Logins obtenerInformacionUsuario(int id) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		Logins info = new Logins();
+		try {
+			// Obtenemos todos los resultados de la tabla Logins por el id
+			con = MysqlConexion.getConexion();
+			String sql = "SELECT * FROM Logins WHERE IdUsuario=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			rs = psm.executeQuery();
+			if(rs.next()) {
+				info.setIdUsuario(rs.getInt("IdUsuario"));
+				info.setTipoUsuario(rs.getString("TipoUsuario"));
+				info.setNombreApellidos(rs.getString("NombreApellidos"));
+				info.setSaldo(rs.getDouble("Saldo"));
+				info.setNumero(rs.getInt("Numero"));
+				info.setClave(rs.getString("Clave"));
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Error en el try catch de Metodos.ObtenerInformacionUsuario");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return info;
 	}
@@ -363,9 +776,16 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			Fecha = rs.getString("FechaFormateada");
-			return Fecha;
 		} catch(Exception e) {
 			System.out.println("Error al Formatear La fecha");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return Fecha;
 	}
@@ -383,9 +803,16 @@ public class Metodos implements IntYape {
 			rs = psm.executeQuery();
 			rs.next();
 			Hora = rs.getString("HoraFormateada");
-			return Hora;
 		} catch(Exception e) {
 			System.out.println("Error al Formatear La Hora");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return Hora;
 	}
@@ -400,8 +827,13 @@ public class Metodos implements IntYape {
 			psm.executeUpdate();
 		} catch(Exception e) {
 			System.out.println("Error En el Bloque Try Catch Cerrar Sesion");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
-
-
 }

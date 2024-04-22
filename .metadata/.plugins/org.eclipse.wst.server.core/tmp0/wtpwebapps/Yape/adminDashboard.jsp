@@ -94,8 +94,8 @@
 							<td><%= item.getEstado() %></td>
 							<td>
 								<a href="Servlet?type=Buscar Yape&id=<%=item.getIdYape()%>">Mas info</a>
-								<a href="Servlet?type=Editar Yape&id=<%=item.getIdYape()%>">Editar</a>
-								<a href="Servlet?type=Eliminar Yape&id=<%=item.getIdYape()%>">Eliminar</a>				
+								<a href="Servlet?type=Buscar Yape a Editar&id=<%=item.getIdYape()%>">Editar</a>
+								<a href="Servlet?type=Eliminar Yape&id=<%=item.getIdYape()%>&numeroRec=<%=item.getNumeroRecibiente()%>&numeroRem=<%=item.getNumeroRealizante()%>&monto=<%=item.getMonto()%>">Eliminar</a>				
 							</td>
 						</tr>
 						<% } %>
@@ -129,7 +129,6 @@
 							<td><%= item.getNombreApellidos() %></td>
 							<td><%= item.getSaldo() %></td>
 							<td><%= item.getNumero() %></td>
-							<td><%= item.getClave() %></td>
 						</tr>
 						<% } %>
                     </tbody>

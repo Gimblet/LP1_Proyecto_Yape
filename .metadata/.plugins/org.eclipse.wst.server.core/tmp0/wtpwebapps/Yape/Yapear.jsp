@@ -71,7 +71,7 @@
                     <input type="submit" name="type" value="Verificar">
                     <h3><%= respuesta %></h3>
                     <input type="submit" name="type" value="Yapear">
-                    <a href="Servlet?type=Volver Cliente" class="btn btn-primary">Regresar</a>
+                    <a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
                 </form>
             </div>
         </div>

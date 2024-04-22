@@ -18,7 +18,6 @@ INDEX VERSION 1.134+C:\Users\dvill\GitRepos\LP1_Proyecto_Yape\.metadata\.plugins
 783541314.index
 3731171975.index
 3567079979.index
-3298137891.index
 2608737994.index
 431302655.index
 3111081404.index
