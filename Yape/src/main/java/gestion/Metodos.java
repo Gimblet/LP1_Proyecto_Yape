@@ -305,90 +305,34 @@ public class Metodos implements IntYape {
 	}
 	
 	//FALTA
-	public void editarUsuario(int id, int numeroRec, int numeroRem, double monto, double OGmonto) { //MAYBE
+	public void editarUsuario(int id, String nombreApe, double saldo, String clave) { //MAYBE
 		Connection con = null;
 		PreparedStatement psm = null;
 		ResultSet rs = null;
 		String sql = null;
-		double nuevoSaldo = 0;
 		try {
 			con = MysqlConexion.getConexion();
-			//Balancear el dinero del receptor
-			sql = "SELECT NumeroRecibiente AS Rec FROM Yapes WHERE IdYape=?";
-			psm = con.prepareStatement(sql);
-			psm.setInt(1, id);
-			rs = psm.executeQuery();
-			rs.next();
-			int OGNumber = rs.getInt("Rec");
-			psm.close(); rs.close();
-			
-			//Caso Mismo numero (El saldo puede disminuir o Subir)
-			if(OGNumber == numeroRec) {
-				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			if(saldo == -9) {
+				sql = "UPDATE Logins SET NombreApellidos=?, Clave=? WHERE IdUsuario=?";
 				psm = con.prepareStatement(sql);
-				psm.setInt(1, numeroRec);
-				rs = psm.executeQuery();
-				rs.next();
-				double residuoMonto = monto - OGmonto;
-				if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
-				else nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
-				psm.close(); rs.close();
-				
-				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
-				psm = con.prepareStatement(sql);
-				psm.setDouble(1, nuevoSaldo);
-				psm.setInt(2, numeroRec);
+				psm.setString(id, nombreApe);
+				psm.setString(2, clave);
+				psm.setInt(3, id);
 				psm.executeUpdate();
-				psm.close();
 			}
-			
-			//Caso Numero Diferente (El saldo solo puede aumentar)
-			else if(OGNumber != numeroRec){
-				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
+			else if (saldo != -9) {
+				sql = "UPDATE Logins SET NombreApellidos=?, Saldo=?, Clave=? WHERE IdUsuario=?";
 				psm = con.prepareStatement(sql);
-				psm.setInt(1, numeroRec);
-				rs = psm.executeQuery();
-				rs.next();
-				nuevoSaldo = rs.getDouble("Saldo") + monto;
-				psm.close(); rs.close();
-				
-				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
-				psm = con.prepareStatement(sql);
-				psm.setDouble(1, nuevoSaldo);
-				psm.setInt(2, numeroRec);
+				psm.setString(1, nombreApe);
+				psm.setDouble(2, saldo);
+				psm.setString(3, clave);
+				psm.setInt(4, id);
 				psm.executeUpdate();
-				psm.close();
 			}
-			
-			//Balancear el saldo del Remitente
-			sql = "SELECT Saldo FROM Logins WHERE Numero=?";
-			psm = con.prepareStatement(sql);
-			psm.setInt(1, numeroRem);
-			rs = psm.executeQuery();
-			rs.next();
-			double residuoMonto = monto - OGmonto;
-			if(monto < OGmonto) nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
-			else nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
-			psm.close(); rs.close();
-			
-			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
-			psm = con.prepareStatement(sql);
-			psm.setDouble(1, nuevoSaldo);
-			psm.setInt(2, numeroRem);
-			psm.executeUpdate();
-			psm.close(); rs.close();
-			
-			//Actualizar Tabla Yapes
-			sql = "UPDATE Yapes SET NumeroRecibiente=?, Monto=?, Fecha=current_date(), Hora=now(), Estado='Modificado' WHERE IdYape=?;";
-			psm = con.prepareStatement(sql);
-			psm.setInt(1, numeroRec);
-			psm.setDouble(2, monto);
-			psm.setInt(3, id);
-			psm.executeUpdate();	
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Problema en try/catch de metodos.editarYape");
+			System.out.println("Problema en try/catch de metodos.editarUsuario");
 		} finally {
 			try {
 				if(con != null) MysqlConexion.closeConnection(con);

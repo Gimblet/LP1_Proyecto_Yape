@@ -38,6 +38,7 @@ public class Servlet extends HttpServlet {
 		case "Editar Yape"             : editarYape(request, response); break;
 		case "Eliminar Yape"           : eliminarYape(request, response); break;
 		case "Buscar Usuario a Editar" : buscarUsuarioEditar(request, response); break;
+		case "Editar Usuario"          : editarUsuario(request, response); break;
 		case "Volver"                  : volver(request, response); break;
 		case "Cerrar Sesion"           : cerrarCurrentLogin(request, response); break;
 		default: 
@@ -146,12 +147,12 @@ public class Servlet extends HttpServlet {
 	
 	protected void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
-		int id = Integer.parseInt(request.getParameter("YapeId"));
-		int numeroRec = Integer.parseInt(request.getParameter("txtNumeroRecipiente"));
-		int numeroRem = Integer.parseInt(request.getParameter("txtNumeroRemitente"));
-		double monto = Double.parseDouble(request.getParameter("txtMonto"));
-		double OGmonto = Double.parseDouble(request.getParameter("txtMontoAntiguo"));
-		metodo.editarUsuario(id, numeroRec, numeroRem, monto, OGmonto);
+		double saldo = -9;
+		int id = Integer.parseInt(request.getParameter("idUsuario"));
+		String nombreApe = request.getParameter("txtNombreApellido");
+		if (request.getParameter("txtSaldo") != null)  saldo = Double.parseDouble(request.getParameter("txtSaldo"));
+		String clave = request.getParameter("txtClave");
+		metodo.editarUsuario(id, nombreApe, saldo, clave);
 		request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response); //FALTA
 	}
 	

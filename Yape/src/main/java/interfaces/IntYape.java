@@ -19,6 +19,7 @@ public interface IntYape {
 	void editarYape(int id, int numeroRec, int numeroRem, double monto, double OGmonto);
 	void eliminarYape(int id, int numeroRec, int numeroRem, double OGmonto);
 	Logins obtenerInformacionUsuario(int id);
+	void editarUsuario(int id, String nombreApe, double saldo, String clave);
 	void yapear(int numero, double monto);
 	ClaseUtilitaria obtenerInformacionYape(int id);
 	public String formatearFecha(String OGFecha);

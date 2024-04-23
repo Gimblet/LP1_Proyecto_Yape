@@ -27,7 +27,7 @@
 		<div class="noEditables">
 			<div class="form-group">
 				<label class="text-secondary">ID Yape : <strong><%= (item != null)? item.getIdUsuario():"" %></strong></label>
-				<input type="hidden" name="YapeId" value="<%=(item != null)? item.getIdUsuario():"" %>">
+				<input type="hidden" name="idUsuario" value="<%=(item != null)? item.getIdUsuario():"" %>">
 			</div>
 			<div class="form-group">
 				<label class="text-secondary">Numero : <strong><%= (item != null)? item.getNumero():"" %></strong></label>
@@ -35,19 +35,23 @@
 			<div class="form-group">
 				<label class="text-secondary">Tipo de Usuario : <strong><%= (item != null)? item.getTipoUsuario():"" %></strong></label>
 			</div>
-			<div class="form-group">
-				<label class="text-secondary">Nombres Y Apellidos</label>
-				<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getNombreApellidos():"" %>">
-			</div>
+		</div>
 			<br>
 			<div class="form-group">
-				<label class="text-secondary">Saldo</label>
-				<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getSaldo():"" %>">
+				<label class="text-secondary">Nombres Y Apellidos</label>
+				<input class="form-control" type="text" name="txtNombreApellido" value="<%= (item != null)? item.getNombreApellidos():"" %>">
 			</div>
+			<br>
+			<% if(item.getTipoUsuario().equals("Cliente")) { %>
+			<div class="form-group">
+				<label class="text-secondary">Saldo</label>
+				<input class="form-control" type="text" name="txtSaldo" value="<%= (item != null)? item.getSaldo():"" %>">
+			</div>
+			<% } %>
 			<br>
 			<div class="form-group">
 				<label class="text-secondary">Clave</label>
-				<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getClave():"" %>">
+				<input class="form-control" type="text" name="txtClave" value="<%= (item != null)? item.getClave():"" %>">
 			</div>
 			<br>
 		<input type="submit" name="type" value="Editar Usuario" >
