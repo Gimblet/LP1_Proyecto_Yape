@@ -43,6 +43,7 @@
                 <br>
                 <div>
                     <form action="Servlet" method="post">
+                    	<input type="submit" value="Nuevo Usuario" name="type">
 						<input type="submit" value="Mostrar Usuarios" name="type">
                         <input id="buscar" type="submit" value="Cerrar Sesion" name="type">
                     </form>
@@ -77,7 +78,7 @@
 							<td><%= item.getClave() %></td>
 							<td>
 								<a href="Servlet?type=Buscar Usuario a Editar&id=<%=item.getIdUsuario()%>">Editar</a>
-								<a href="Servlet?type=Buscar Usuario a Eliminar&id=<%=item.getIdUsuario()%>">Eliminar</a>
+								<a href="Servlet?type=Eliminar Usuario&id=<%=item.getIdUsuario()%>">Eliminar</a>
 							</td>
 						</tr>
 						<% } } %>

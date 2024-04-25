@@ -1232,3 +1232,15 @@ abr. 23, 2024 01:11:11.217 console.error: "C:\\Users\\dvill\\AppData\\Local\\Moz
 abr. 23, 2024 01:11:11.218 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-23-06-11-10.purge.bg_rm"
 abr. 23, 2024 01:11:11.221 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-04-23-06-11-10.purge.bg_rm. removed 18 entries."
 abr. 23, 2024 01:11:11.222 console.warn: "Skipping Glean as no metrics id is passed"
+
+abr. 24, 2024 17:57:40.286 NEW SESSION
+abr. 24, 2024 17:57:40.287 *** You are running in background task mode. ***
+abr. 24, 2024 17:57:40.289 *** You are running in headless mode.
+abr. 24, 2024 17:57:40.681 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 24, 2024 17:57:40.683 console.warn: "Skipping Glean as no metrics id is passed"
+
+abr. 25, 2024 11:41:14.160 NEW SESSION
+abr. 25, 2024 11:41:14.160 *** You are running in background task mode. ***
+abr. 25, 2024 11:41:14.161 *** You are running in headless mode.
+abr. 25, 2024 11:41:14.356 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+abr. 25, 2024 11:41:14.358 console.warn: "Skipping Glean as no metrics id is passed"

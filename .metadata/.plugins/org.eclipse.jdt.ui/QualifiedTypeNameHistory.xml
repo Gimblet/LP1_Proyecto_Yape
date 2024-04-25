@@ -13,8 +13,8 @@
     <fullyQualifiedTypeName name="data.Logins"/>
     <fullyQualifiedTypeName name="gestion.Metodos"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="util.MysqlConexion"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="util.MysqlConexion"/>
 </qualifiedTypeNameHistroy>

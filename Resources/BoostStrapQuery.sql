@@ -9,7 +9,7 @@ CREATE TABLE Logins(
 	IdUsuario       INT AUTO_INCREMENT PRIMARY KEY,
     TipoUsuario     VARCHAR(10) NOT NULL,
     NombreApellidos VARCHAR(100) NOT NULL,
-    Saldo			DOUBLE NOT NULL,
+    Saldo			DOUBLE NULL,
     Numero          INT(9) NOT NULL UNIQUE,
     Clave      		VARCHAR(100) NOT NULL
 );
@@ -32,11 +32,11 @@ CREATE TABLE Yapes(
 );
 
 INSERT INTO Logins(TipoUsuario, NombreApellidos, Saldo, Numero, Clave) VALUES
-('HeadAdmin', 'Diego Villena',     0.00  , 999888777, 'mysql'),
+('HeadAdmin', 'Diego Villena',     NULL  , 999888777, 'mysql'),
 
-('Admin',     'Pedro Aguilar',     0.00  , 984833714, 'pedro'),
-('Admin',     'Maria Lopez',       0.00  , 912345678, 'maria'),
-('Admin',     'Ana Rodriguez',     0.00  , 923456789, 'ana'),
+('Admin',     'Pedro Aguilar',     NULL  , 984833714, 'pedro'),
+('Admin',     'Maria Lopez',       NULL  , 912345678, 'maria'),
+('Admin',     'Ana Rodriguez',     NULL  , 923456789, 'ana'),
 
 ('Cliente',   'Valentina Sanchez', 170.35, 945118567, 'vale'),
 ('Cliente',   'Jesus Garcia',      450.64, 938474942, 'jesus'),

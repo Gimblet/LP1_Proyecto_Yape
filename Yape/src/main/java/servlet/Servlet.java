@@ -37,7 +37,10 @@ public class Servlet extends HttpServlet {
 		case "Buscar Yape a Editar"    : buscarYapeEditar(request, response); break;
 		case "Editar Yape"             : editarYape(request, response); break;
 		case "Eliminar Yape"           : eliminarYape(request, response); break;
+		case "Nuevo Usuario"           : request.getRequestDispatcher("nuevoUsuario.jsp").forward(request, response); break;
+		case "Registrar Usuario"       : agregarUsuario(request, response); break;
 		case "Buscar Usuario a Editar" : buscarUsuarioEditar(request, response); break;
+		case "Eliminar Usuario"        : eliminarUsuario(request, response); break;
 		case "Editar Usuario"          : editarUsuario(request, response); break;
 		case "Volver"                  : volver(request, response); break;
 		case "Cerrar Sesion"           : cerrarCurrentLogin(request, response); break;
@@ -137,6 +140,10 @@ public class Servlet extends HttpServlet {
 		request.getRequestDispatcher("EditarYape.jsp").forward(request, response);
 	}
 	
+	protected void agregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+	
 	protected void buscarUsuarioEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -179,6 +186,13 @@ public class Servlet extends HttpServlet {
 		double OGmonto = Double.parseDouble(request.getParameter("monto"));
 		metodo.eliminarYape(id, numeroRec, numeroRem, OGmonto);
 		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+	}
+	
+	protected void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Metodos metodo = new Metodos();
+		int id = Integer.parseInt(request.getParameter("id"));
+		metodo.eliminarUsuario(id);
+		request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 	}
 
 	

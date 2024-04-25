@@ -47,8 +47,8 @@
 				<label class="text-secondary">Saldo</label>
 				<input class="form-control" type="text" name="txtSaldo" value="<%= (item != null)? item.getSaldo():"" %>">
 			</div>
-			<% } %>
 			<br>
+			<% } %>		
 			<div class="form-group">
 				<label class="text-secondary">Clave</label>
 				<input class="form-control" type="text" name="txtClave" value="<%= (item != null)? item.getClave():"" %>">

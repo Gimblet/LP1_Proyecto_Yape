@@ -303,9 +303,9 @@ public class Metodos implements IntYape {
 			}
 		}
 	}
-	
-	//FALTA
+
 	public void editarUsuario(int id, String nombreApe, double saldo, String clave) { //MAYBE
+		// Saldo -9 Significa que el usuario es Admin, cualquier otro valor indica que el usuario es Cliente
 		Connection con = null;
 		PreparedStatement psm = null;
 		ResultSet rs = null;
@@ -315,7 +315,7 @@ public class Metodos implements IntYape {
 			if(saldo == -9) {
 				sql = "UPDATE Logins SET NombreApellidos=?, Clave=? WHERE IdUsuario=?";
 				psm = con.prepareStatement(sql);
-				psm.setString(id, nombreApe);
+				psm.setString(1, nombreApe);
 				psm.setString(2, clave);
 				psm.setInt(3, id);
 				psm.executeUpdate();
@@ -398,6 +398,28 @@ public class Metodos implements IntYape {
 				if(con != null) MysqlConexion.closeConnection(con);
 				if(psm != null) psm.close();
 				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void eliminarUsuario(int id) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "DELETE FROM Logins WHERE idUsuario=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, id);
+			psm.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Problema en try/catch de metodos.eliminarYape");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
