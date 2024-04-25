@@ -1,7 +1,0 @@
-package data;
-
-public class Yapes {
-	private int IdYape, NumeroRealizante, NumeroRecibiente;
-	private double Monto;
-	private String Fecha, Hora;
-}

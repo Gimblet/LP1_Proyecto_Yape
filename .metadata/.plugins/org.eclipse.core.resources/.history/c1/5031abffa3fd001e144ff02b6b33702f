@@ -1,5 +1,0 @@
-package interfaces;
-
-public interface IntYape {
-	boolean Login(int numero, String clave, String tipoUsr);
-}

@@ -404,6 +404,35 @@ public class Metodos implements IntYape {
 		}
 	}
 	
+	public void agregarUsuario(Logins usuario) {
+		Connection con = null;
+		PreparedStatement psm = null;
+		String sql;
+		try {
+			con = MysqlConexion.getConexion();
+			if(usuario.getSaldo() == -9) sql = "INSERT INTO Logins (TipoUsuario, NombreApellidos, Numero, Clave, Saldo) VALUES (?,?,?,?,NULL)";
+			else sql = "INSERT INTO Logins (TipoUsuario, NombreApellidos, Numero, Clave, Saldo) VALUES (?,?,?,?,?)";
+			psm = con.prepareStatement(sql);
+			psm.setString(1, usuario.getTipoUsuario());
+			psm.setString(2, usuario.getNombreApellidos());
+			psm.setInt(3, usuario.getNumero());
+			psm.setString(4, usuario.getClave());
+			if(usuario.getSaldo() != -9)
+				psm.setDouble(5, usuario.getSaldo());
+			psm.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Problema en try/catch de metodos.agregarUsuario");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public void eliminarUsuario(int id) {
 		Connection con = null;
 		PreparedStatement psm = null;

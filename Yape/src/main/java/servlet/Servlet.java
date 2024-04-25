@@ -141,7 +141,22 @@ public class Servlet extends HttpServlet {
 	}
 	
 	protected void agregarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Logins usuario = new Logins();
+		Metodos metodo = new Metodos();
+		usuario.setTipoUsuario(request.getParameter("cboTipoUsuario"));
+		usuario.setNombreApellidos(request.getParameter("txtNombreApe"));
+		usuario.setSaldo(-9);
+		if(usuario.getTipoUsuario().equals("Cliente")) {
+			  usuario.setSaldo(Double.parseDouble(request.getParameter("txtSaldo")));
+		} else if (usuario.getTipoUsuario().equals("Seleccionar Tipo de Usuario")) {
+			request.setAttribute("Mensaje", "Seleccionar un tipo de Usuario");
+			request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
+		}
+		usuario.setNumero(Integer.parseInt(request.getParameter("txtNumero")));
+		usuario.setClave(request.getParameter("txtClave"));
 		
+		metodo.agregarUsuario(usuario);
+		request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 	}
 	
 	protected void buscarUsuarioEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
