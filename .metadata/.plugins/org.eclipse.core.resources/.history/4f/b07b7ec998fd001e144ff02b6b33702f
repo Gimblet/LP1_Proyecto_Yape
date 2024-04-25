@@ -1,7 +1,0 @@
-package data;
-
-public class Logins {
-	private int IdUsuario, Numero;
-	private double Saldo;
-	private String TipoUsuario, NombreApellidos, Clave;
-}
