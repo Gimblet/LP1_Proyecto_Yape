@@ -235,6 +235,7 @@ public class Metodos implements IntYape {
 				rs.next();
 				double residuoMonto = monto - OGmonto;
 				nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
+//				else nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
 				psm.close(); rs.close();
 				
 				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
@@ -247,7 +248,7 @@ public class Metodos implements IntYape {
 			
 			//Caso Numero Diferente (El saldo solo puede aumentar)
 			else if(OGNumber != numeroRec){
-				sql = "SELECT Saldo FROM Logins WHERE Numero=?;";
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, numeroRec);
 				rs = psm.executeQuery();
@@ -255,30 +256,19 @@ public class Metodos implements IntYape {
 				nuevoSaldo = rs.getDouble("Saldo") + monto;
 				psm.close(); rs.close();
 				
-				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?;";
+				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";
 				psm = con.prepareStatement(sql);
 				psm.setDouble(1, nuevoSaldo);
-				System.out.println("El Nuevo de la persona que solo puede aumentar es" + nuevoSaldo);
 				psm.setInt(2, numeroRec);
 				psm.executeUpdate();
 				psm.close();
 				
-				//Restar la totalidad del saldo al receptor original
-				sql = "SELECT Saldo FROM Logins WHERE Numero=?;";
+				//Restar el saldo al receptor original
+				sql = "SELECT Saldo FROM Logins WHERE Numero=?";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, numeroRec);
 				rs = psm.executeQuery();
 				rs.next();
-				nuevoSaldo = rs.getDouble("Saldo") - OGmonto;
-				psm.close(); rs.close();
-				
-				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?;";
-				psm = con.prepareStatement(sql);
-				psm.setDouble(1, nuevoSaldo);
-				System.out.println("El Nuevo de la persona que disminuye todo es" + nuevoSaldo);
-				psm.setInt(2, numeroRec);
-				psm.executeUpdate();
-				psm.close();
 			}
 			
 			//Balancear el saldo del Remitente
@@ -289,6 +279,7 @@ public class Metodos implements IntYape {
 			rs.next();
 			double residuoMonto = monto - OGmonto;
 			nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+//			else nuevoSaldo = rs.getDouble("Saldo") + residuoMonto;
 			psm.close(); rs.close();
 			
 			sql = "UPDATE Logins SET Saldo=? WHERE Numero=?";

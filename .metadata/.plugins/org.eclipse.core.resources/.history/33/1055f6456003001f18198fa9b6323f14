@@ -278,7 +278,6 @@ public class Metodos implements IntYape {
 				System.out.println("El Nuevo de la persona que disminuye todo es" + nuevoSaldo);
 				psm.setInt(2, numeroRec);
 				psm.executeUpdate();
-				psm.close();
 			}
 			
 			//Balancear el saldo del Remitente
