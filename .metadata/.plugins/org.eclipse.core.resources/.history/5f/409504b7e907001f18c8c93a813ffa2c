@@ -266,7 +266,7 @@ public class Metodos implements IntYape {
 				//Restar la totalidad del saldo al receptor original
 				sql = "SELECT Saldo FROM Logins WHERE Numero=?;";
 				psm = con.prepareStatement(sql);
-				psm.setInt(1, OGNumber);
+				psm.setInt(1, numeroRec);
 				rs = psm.executeQuery();
 				rs.next();
 				nuevoSaldo = rs.getDouble("Saldo") - OGmonto;
@@ -276,7 +276,7 @@ public class Metodos implements IntYape {
 				psm = con.prepareStatement(sql);
 				psm.setDouble(1, nuevoSaldo);
 				System.out.println("El Nuevo de la persona que disminuye todo es" + nuevoSaldo);
-				psm.setInt(2, OGNumber);
+				psm.setInt(2, numeroRec);
 				psm.executeUpdate();
 				psm.close();
 			}
