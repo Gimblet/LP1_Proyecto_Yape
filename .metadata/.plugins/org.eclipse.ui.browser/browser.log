@@ -1771,3 +1771,142 @@ may. 01, 2024 23:33:48.886 *** You are running in background task mode. ***
 may. 01, 2024 23:33:48.887 *** You are running in headless mode.
 may. 01, 2024 23:33:49.84 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
 may. 01, 2024 23:33:49.85 console.warn: "Skipping Glean as no metrics id is passed"
+
+may. 02, 2024 01:51:57.546 NEW SESSION
+may. 02, 2024 01:51:57.546 [21288:12960:0502/015157.544:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 01:51:59.89 [21288:23084:0502/015159.089:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 02, 2024 01:51:59.91 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 02, 2024 01:51:59.91 ERROR: Time is after notAfter
+may. 02, 2024 01:51:59.91 
+may. 02, 2024 01:51:59.92 
+may. 02, 2024 01:51:59.796 [21288:12960:0502/015159.795:ERROR:device_event_log_impl.cc(195)] [01:51:59.795] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 02, 2024 01:52:44.65 *** You are running in background task mode. ***
+may. 02, 2024 01:52:44.65 *** You are running in headless mode.
+may. 02, 2024 01:52:44.258 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 02, 2024 01:52:44.259 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:52:48.578 *** You are running in background task mode. ***
+may. 02, 2024 01:52:48.578 *** You are running in headless mode.
+may. 02, 2024 01:52:48.686 *** You are running in background task mode. ***
+may. 02, 2024 01:52:48.686 *** You are running in headless mode.
+may. 02, 2024 01:52:48.771 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 02, 2024 01:52:48.771 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:52:48.772 console.error: BackgroundTasksManager: 
+may. 02, 2024 01:52:48.772   Backgroundtask named 'removeDirectory' threw exception
+may. 02, 2024 01:52:48.773   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 02, 2024 01:52:48.773   Stack:
+may. 02, 2024 01:52:48.773     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 02, 2024 01:52:48.774 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 02, 2024 01:52:48.774 
+may. 02, 2024 01:52:48.864 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-06-52-48.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 02, 2024 01:52:48.865 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-52-48.purge.bg_rm"
+may. 02, 2024 01:52:48.869 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-52-48.purge.bg_rm. removed 15 entries."
+may. 02, 2024 01:52:48.872 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:05.160 *** You are running in background task mode. ***
+may. 02, 2024 01:53:05.161 *** You are running in headless mode.
+may. 02, 2024 01:53:05.374 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 02, 2024 01:53:05.376 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:08.85 *** You are running in background task mode. ***
+may. 02, 2024 01:53:08.86 *** You are running in headless mode.
+may. 02, 2024 01:53:08.179 *** You are running in background task mode. ***
+may. 02, 2024 01:53:08.179 *** You are running in headless mode.
+may. 02, 2024 01:53:08.270 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 02, 2024 01:53:08.271 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:08.271 console.error: BackgroundTasksManager: 
+may. 02, 2024 01:53:08.271   Backgroundtask named 'removeDirectory' threw exception
+may. 02, 2024 01:53:08.272   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 02, 2024 01:53:08.272   Stack:
+may. 02, 2024 01:53:08.272     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 02, 2024 01:53:08.272 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 02, 2024 01:53:08.273 
+may. 02, 2024 01:53:08.364 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-06-53-08.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 02, 2024 01:53:08.367 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-53-08.purge.bg_rm"
+may. 02, 2024 01:53:08.370 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-53-08.purge.bg_rm. removed 14 entries."
+may. 02, 2024 01:53:08.372 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:15.811 *** You are running in background task mode. ***
+may. 02, 2024 01:53:15.812 *** You are running in headless mode.
+may. 02, 2024 01:53:15.987 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 02, 2024 01:53:15.988 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:20.06 *** You are running in background task mode. ***
+may. 02, 2024 01:53:20.07 *** You are running in headless mode.
+may. 02, 2024 01:53:20.88 *** You are running in background task mode. ***
+may. 02, 2024 01:53:20.88 *** You are running in headless mode.
+may. 02, 2024 01:53:20.182 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 02, 2024 01:53:20.183 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:53:20.184 console.error: BackgroundTasksManager: 
+may. 02, 2024 01:53:20.184   Backgroundtask named 'removeDirectory' threw exception
+may. 02, 2024 01:53:20.184   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 02, 2024 01:53:20.185   Stack:
+may. 02, 2024 01:53:20.185     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 02, 2024 01:53:20.185 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 02, 2024 01:53:20.185 
+may. 02, 2024 01:53:20.259 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-06-53-20.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 02, 2024 01:53:20.260 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-53-20.purge.bg_rm"
+may. 02, 2024 01:53:20.263 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-53-20.purge.bg_rm. removed 13 entries."
+may. 02, 2024 01:53:20.264 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:54:05.461 *** You are running in background task mode. ***
+may. 02, 2024 01:54:05.462 *** You are running in headless mode.
+may. 02, 2024 01:54:05.639 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 02, 2024 01:54:05.641 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:54:07.461 *** You are running in background task mode. ***
+may. 02, 2024 01:54:07.462 *** You are running in headless mode.
+may. 02, 2024 01:54:07.551 *** You are running in background task mode. ***
+may. 02, 2024 01:54:07.551 *** You are running in headless mode.
+may. 02, 2024 01:54:07.646 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 02, 2024 01:54:07.646 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 01:54:07.647 console.error: BackgroundTasksManager: 
+may. 02, 2024 01:54:07.647   Backgroundtask named 'removeDirectory' threw exception
+may. 02, 2024 01:54:07.647   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 02, 2024 01:54:07.647   Stack:
+may. 02, 2024 01:54:07.648     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 02, 2024 01:54:07.648 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 02, 2024 01:54:07.648 
+may. 02, 2024 01:54:07.724 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-06-54-07.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 02, 2024 01:54:07.725 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-54-07.purge.bg_rm"
+may. 02, 2024 01:54:07.728 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-06-54-07.purge.bg_rm. removed 13 entries."
+may. 02, 2024 01:54:07.729 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 02:06:26.715 *** You are running in background task mode. ***
+may. 02, 2024 02:06:26.716 *** You are running in headless mode.
+may. 02, 2024 02:06:26.911 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 02, 2024 02:06:26.912 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 02:06:30.461 *** You are running in background task mode. ***
+may. 02, 2024 02:06:30.462 *** You are running in headless mode.
+may. 02, 2024 02:06:30.539 *** You are running in background task mode. ***
+may. 02, 2024 02:06:30.540 *** You are running in headless mode.
+may. 02, 2024 02:06:30.641 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 02, 2024 02:06:30.642 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 02:06:30.644 console.error: BackgroundTasksManager: 
+may. 02, 2024 02:06:30.644   Backgroundtask named 'removeDirectory' threw exception
+may. 02, 2024 02:06:30.644   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 02, 2024 02:06:30.645   Stack:
+may. 02, 2024 02:06:30.645     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 02, 2024 02:06:30.646 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 02, 2024 02:06:30.646 
+may. 02, 2024 02:06:30.718 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-07-06-30.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 02, 2024 02:06:30.719 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-07-06-30.purge.bg_rm"
+may. 02, 2024 02:06:30.722 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-07-06-30.purge.bg_rm. removed 14 entries."
+may. 02, 2024 02:06:30.724 console.warn: "Skipping Glean as no metrics id is passed"
+may. 02, 2024 02:06:37.585 [19996:14400:0502/020637.585:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:06:39.789 [19996:14400:0502/020639.789:ERROR:device_event_log_impl.cc(195)] [02:06:39.787] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 02, 2024 02:07:25.619 [19996:18312:0502/020725.619:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 02, 2024 02:07:25.620 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 02, 2024 02:07:25.620 ERROR: Time is after notAfter
+may. 02, 2024 02:07:25.620 
+may. 02, 2024 02:07:25.621 
+may. 02, 2024 02:08:14.735 [22660:20612:0502/020814.735:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:08:15.832 [22660:17356:0502/020815.832:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 02, 2024 02:08:15.833 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 02, 2024 02:08:15.834 ERROR: Time is after notAfter
+may. 02, 2024 02:08:15.834 
+may. 02, 2024 02:08:15.835 
+may. 02, 2024 02:08:17.913 [22660:20612:0502/020817.913:ERROR:device_event_log_impl.cc(195)] [02:08:17.913] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 02, 2024 02:09:50.509 [12552:20512:0502/020950.508:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:09:52.715 [12552:20512:0502/020952.715:ERROR:device_event_log_impl.cc(195)] [02:09:52.715] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 02, 2024 02:11:01.870 [14040:13512:0502/021101.870:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:12:13.981 [15928:18176:0502/021213.981:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:12:24.255 [21636:11996:0502/021224.255:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 02, 2024 02:12:27.516 [21636:11996:0502/021227.515:ERROR:device_event_log_impl.cc(195)] [02:12:27.515] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 02, 2024 02:17:04.447 [21636:3272:0502/021704.445:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 02, 2024 02:17:04.447 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 02, 2024 02:17:04.448 ERROR: Time is after notAfter
+may. 02, 2024 02:17:04.448 
+may. 02, 2024 02:17:04.448 

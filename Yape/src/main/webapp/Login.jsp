@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" href="Resources/bootstrap.min.css">
+		<link href="Resources/bootstrap.min.css" rel="stylesheet">
 		<title>Login</title>
 		<style>
 			html,

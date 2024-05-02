@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" href="Resources/bootstrap.min.css">
+		<link href="Resources/bootstrap.min.css" rel="stylesheet">
 		<title>Login</title>
 		<style>
 			html,
@@ -83,7 +83,7 @@
 						</div>
 						<div class="form-group">
 							<label><strong>Clave</strong></label>
-							<input class="form-control" type="text" name="txtClave" required maxlength="99" minlength="4">
+							<input class="form-control" type="password" name="txtClave" required maxlength="99" minlength="4">
 						</div>
 						<div class="form-group">
 							<label><strong>Tipo de Usuario</strong></label>
