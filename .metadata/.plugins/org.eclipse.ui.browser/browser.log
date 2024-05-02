@@ -1600,3 +1600,174 @@ may. 01, 2024 20:46:34.601 console.error: "C:\\Users\\dvill\\AppData\\Local\\Moz
 may. 01, 2024 20:46:34.602 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-46-34.purge.bg_rm"
 may. 01, 2024 20:46:34.605 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-46-34.purge.bg_rm. removed 15 entries."
 may. 01, 2024 20:46:34.607 console.warn: "Skipping Glean as no metrics id is passed"
+
+may. 01, 2024 20:55:14.931 NEW SESSION
+may. 01, 2024 20:55:14.933 *** You are running in background task mode. ***
+may. 01, 2024 20:55:14.934 *** You are running in headless mode.
+may. 01, 2024 20:55:15.129 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 20:55:15.130 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:55:21.691 *** You are running in background task mode. ***
+may. 01, 2024 20:55:21.691 *** You are running in headless mode.
+may. 01, 2024 20:55:21.828 *** You are running in background task mode. ***
+may. 01, 2024 20:55:21.828 *** You are running in headless mode.
+may. 01, 2024 20:55:21.889 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 01, 2024 20:55:21.890 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:55:21.891 console.error: BackgroundTasksManager: 
+may. 01, 2024 20:55:21.891   Backgroundtask named 'removeDirectory' threw exception
+may. 01, 2024 20:55:21.892   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 01, 2024 20:55:21.892   Stack:
+may. 01, 2024 20:55:21.892     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 01, 2024 20:55:21.893 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 01, 2024 20:55:21.893 
+may. 01, 2024 20:55:21.998 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-01-55-21.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 01, 2024 20:55:22.01 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-55-21.purge.bg_rm"
+may. 01, 2024 20:55:22.03 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-55-21.purge.bg_rm. removed 15 entries."
+may. 01, 2024 20:55:22.05 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:56:25.683 *** You are running in background task mode. ***
+may. 01, 2024 20:56:25.684 *** You are running in headless mode.
+may. 01, 2024 20:56:25.910 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 20:56:25.913 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:58:54.833 *** You are running in background task mode. ***
+may. 01, 2024 20:58:54.834 *** You are running in headless mode.
+may. 01, 2024 20:58:54.842 *** You are running in background task mode. ***
+may. 01, 2024 20:58:54.843 *** You are running in headless mode.
+may. 01, 2024 20:58:55.33 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-01-58-54.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 01, 2024 20:58:55.34 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 01, 2024 20:58:55.34 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:58:55.35 console.error: BackgroundTasksManager: 
+may. 01, 2024 20:58:55.35   Backgroundtask named 'removeDirectory' threw exception
+may. 01, 2024 20:58:55.36   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 01, 2024 20:58:55.36   Stack:
+may. 01, 2024 20:58:55.37     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 01, 2024 20:58:55.37 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 01, 2024 20:58:55.37 
+may. 01, 2024 20:58:55.38 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-58-54.purge.bg_rm"
+may. 01, 2024 20:58:55.38 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-01-58-54.purge.bg_rm. removed 11 entries."
+may. 01, 2024 20:58:55.40 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 20:59:13.880 [8736:1880:0501/205913.880:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 20:59:16.170 [8736:1880:0501/205916.169:ERROR:device_event_log_impl.cc(195)] [20:59:16.169] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 21:06:51.106 [8736:1880:0501/210651.106:ERROR:device_event_log_impl.cc(195)] [21:06:51.106] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 21:06:51.154 [8736:1880:0501/210651.153:ERROR:device_event_log_impl.cc(195)] [21:06:51.154] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 21:16:58.668 [8736:1880:0501/211658.667:ERROR:device_event_log_impl.cc(195)] [21:16:58.667] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 21:17:00.465 [8736:1880:0501/211700.465:ERROR:device_event_log_impl.cc(195)] [21:17:00.465] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 21:17:00.510 [8736:1880:0501/211700.510:ERROR:device_event_log_impl.cc(195)] [21:17:00.509] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 22:04:31.431 [21356:4900:0501/220431.430:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 22:04:34.181 [21356:22544:0501/220434.181:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 22:04:34.183 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+may. 01, 2024 22:04:34.183 ERROR: Time is after notAfter
+may. 01, 2024 22:04:34.184 
+may. 01, 2024 22:04:34.184 
+may. 01, 2024 22:04:34.185 [21356:15156:0501/220434.181:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 22:04:34.186 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+may. 01, 2024 22:04:34.186 ERROR: Time is after notAfter
+may. 01, 2024 22:04:34.187 
+may. 01, 2024 22:04:34.188 
+may. 01, 2024 22:04:34.817 [21356:4900:0501/220434.817:ERROR:device_event_log_impl.cc(195)] [22:04:34.817] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 22:58:38.404 *** You are running in background task mode. ***
+may. 01, 2024 22:58:38.407 *** You are running in headless mode.
+may. 01, 2024 22:58:38.622 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 22:58:38.623 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 22:58:40.703 *** You are running in background task mode. ***
+may. 01, 2024 22:58:40.703 *** You are running in headless mode.
+may. 01, 2024 22:58:40.773 *** You are running in background task mode. ***
+may. 01, 2024 22:58:40.773 *** You are running in headless mode.
+may. 01, 2024 22:58:40.875 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 01, 2024 22:58:40.876 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 22:58:40.876 console.error: BackgroundTasksManager: 
+may. 01, 2024 22:58:40.876   Backgroundtask named 'removeDirectory' threw exception
+may. 01, 2024 22:58:40.877   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 01, 2024 22:58:40.877   Stack:
+may. 01, 2024 22:58:40.878     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 01, 2024 22:58:40.878 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 01, 2024 22:58:40.878 
+may. 01, 2024 22:58:40.938 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-03-58-40.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 01, 2024 22:58:40.940 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-03-58-40.purge.bg_rm"
+may. 01, 2024 22:58:40.943 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-03-58-40.purge.bg_rm. removed 13 entries."
+may. 01, 2024 22:58:40.947 console.warn: "Skipping Glean as no metrics id is passed"
+
+may. 01, 2024 23:03:51.429 NEW SESSION
+may. 01, 2024 23:03:51.430 [23408:19516:0501/230351.428:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:03:54.335 [23408:22620:0501/230354.335:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:03:54.335 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:03:54.336 ERROR: Time is after notAfter
+may. 01, 2024 23:03:54.336 
+may. 01, 2024 23:03:54.336 
+may. 01, 2024 23:03:55.363 [23408:19516:0501/230355.362:ERROR:device_event_log_impl.cc(195)] [23:03:55.363] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 23:04:16.561 [11556:20500:0501/230416.560:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:04:18.598 [11556:11996:0501/230418.597:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:04:18.598 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:04:18.599 ERROR: Time is after notAfter
+may. 01, 2024 23:04:18.599 
+may. 01, 2024 23:04:18.600 
+may. 01, 2024 23:04:20.861 [11556:20500:0501/230420.861:ERROR:device_event_log_impl.cc(195)] [23:04:20.860] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 23:07:46.373 *** You are running in background task mode. ***
+may. 01, 2024 23:07:46.374 *** You are running in headless mode.
+may. 01, 2024 23:07:46.673 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 23:07:46.676 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 23:12:14.629 *** You are running in background task mode. ***
+may. 01, 2024 23:12:14.629 *** You are running in headless mode.
+may. 01, 2024 23:12:14.801 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-04-12-14.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 01, 2024 23:12:14.802 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-04-12-14.purge.bg_rm"
+may. 01, 2024 23:12:14.804 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-04-12-14.purge.bg_rm. removed 10 entries."
+may. 01, 2024 23:12:14.805 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 23:12:17.154 *** You are running in background task mode. ***
+may. 01, 2024 23:12:17.154 *** You are running in headless mode.
+may. 01, 2024 23:12:17.339 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 23:12:17.340 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 23:12:20.435 *** You are running in background task mode. ***
+may. 01, 2024 23:12:20.436 *** You are running in headless mode.
+may. 01, 2024 23:12:20.523 *** You are running in background task mode. ***
+may. 01, 2024 23:12:20.523 *** You are running in headless mode.
+may. 01, 2024 23:12:20.623 console.error: "C:\\Users\\dvill\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\storage\\to-be-removed" "" 0 "*" ""
+may. 01, 2024 23:12:20.624 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 23:12:20.625 console.error: BackgroundTasksManager: 
+may. 01, 2024 23:12:20.625   Backgroundtask named 'removeDirectory' threw exception
+may. 01, 2024 23:12:20.625   Message: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [nsIFile.directoryEntries]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs :: cleanupOtherDirectories :: line 206"  data: no]
+may. 01, 2024 23:12:20.626   Stack:
+may. 01, 2024 23:12:20.626     cleanupOtherDirectories@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:206:17
+may. 01, 2024 23:12:20.626 runBackgroundTask@resource://gre/modules/backgroundtasks/BackgroundTask_removeDirectory.sys.mjs:331:11
+may. 01, 2024 23:12:20.627 
+may. 01, 2024 23:12:20.687 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "cache2.2024-05-02-04-12-20.purge.bg_rm" 10 ".purge.bg_rm" ""
+may. 01, 2024 23:12:20.688 console.error: "started removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-04-12-20.purge.bg_rm"
+may. 01, 2024 23:12:20.691 console.error: "done removing C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default\\cache2.2024-05-02-04-12-20.purge.bg_rm. removed 13 entries."
+may. 01, 2024 23:12:20.692 console.warn: "Skipping Glean as no metrics id is passed"
+may. 01, 2024 23:12:26.254 [7768:23248:0501/231226.254:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:12:28.105 [7768:20516:0501/231228.105:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:12:28.105 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:12:28.106 ERROR: Time is after notAfter
+may. 01, 2024 23:12:28.106 
+may. 01, 2024 23:12:28.107 
+may. 01, 2024 23:12:28.837 [7768:23248:0501/231228.836:ERROR:device_event_log_impl.cc(195)] [23:12:28.836] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 23:15:58.177 [7768:20516:0501/231558.177:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:15:58.177 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:15:58.177 ERROR: Time is after notAfter
+may. 01, 2024 23:15:58.178 
+may. 01, 2024 23:15:58.178 
+may. 01, 2024 23:16:24.889 [3892:3716:0501/231624.889:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:16:26.486 [3892:10532:0501/231626.485:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:16:26.486 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:16:26.486 ERROR: Time is after notAfter
+may. 01, 2024 23:16:26.487 
+may. 01, 2024 23:16:26.487 
+may. 01, 2024 23:16:27.188 [3892:3716:0501/231627.188:ERROR:device_event_log_impl.cc(195)] [23:16:27.187] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 23:16:52.540 [3892:10532:0501/231652.540:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:16:52.540 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:16:52.541 ERROR: Time is after notAfter
+may. 01, 2024 23:16:52.541 
+may. 01, 2024 23:16:52.541 
+may. 01, 2024 23:31:38.531 [16776:4812:0501/233138.530:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:31:40.770 [16776:4812:0501/233140.768:ERROR:device_event_log_impl.cc(195)] [23:31:40.769] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+may. 01, 2024 23:33:11.645 NEW SESSION
+may. 01, 2024 23:33:11.645 [23292:10964:0501/233311.644:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:33:34.847 [2376:15124:0501/233334.847:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 01, 2024 23:33:36.704 [2376:18876:0501/233336.703:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+may. 01, 2024 23:33:36.704 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+may. 01, 2024 23:33:36.704 ERROR: Time is after notAfter
+may. 01, 2024 23:33:36.705 
+may. 01, 2024 23:33:36.705 
+may. 01, 2024 23:33:37.85 [2376:15124:0501/233337.085:ERROR:device_event_log_impl.cc(195)] [23:33:37.085] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 01, 2024 23:33:48.886 *** You are running in background task mode. ***
+may. 01, 2024 23:33:48.887 *** You are running in headless mode.
+may. 01, 2024 23:33:49.84 console.error: "C:\\Users\\dvill\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\ftyqkd8i.dev-edition-default" "" 0 ".purge.bg_rm" ""
+may. 01, 2024 23:33:49.85 console.warn: "Skipping Glean as no metrics id is passed"

@@ -54,7 +54,21 @@ public class Servlet extends HttpServlet {
 	protected void loginUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		metodo.cerrarSesion();
-		int numero = Integer.parseInt(request.getParameter("txtNumero")); 
+		
+		//Validar si el numero ingresado empieza con 9
+		String Snumero = request.getParameter("txtNumero");
+		if(!Snumero.startsWith("9")) {
+			request.setAttribute("mensaje", "Número Invalido");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+		} try {
+			//Validar si el numero ingresado aparte de iniciar con 9 tiene otros numeros
+			Integer.parseInt(request.getParameter("txtNumero"));
+		} catch(NumberFormatException e) {
+			request.setAttribute("mensaje", "Número Invalido");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
+		}
+		
+		int numero = Integer.parseInt(request.getParameter("txtNumero"));
 		String clave = request.getParameter("txtClave");
 		String tipoUser = request.getParameter("cboTipoUsuario");
 		Logins isUser = metodo.Login(numero, clave, tipoUser);
@@ -63,7 +77,7 @@ public class Servlet extends HttpServlet {
 			if(isUser.getTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
 			if(isUser.getTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 		} else {
-			request.setAttribute("mensaje", "Usuario/Contraseña o rol incorrecto");
+			request.setAttribute("mensaje", "Datos incorrectos");
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 	}

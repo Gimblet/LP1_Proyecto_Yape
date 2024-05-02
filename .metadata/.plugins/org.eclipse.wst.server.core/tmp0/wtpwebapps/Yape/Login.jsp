@@ -4,17 +4,33 @@
 
 	<head>
 		<meta charset="ISO-8859-1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="Resources/bootstrap.min.css">
 		<title>Login</title>
 		<style>
+			html,
+			body {
+				background-color: purple;
+				height: 100%;
+				margin: 0;
+			}
+
 			.container {
 				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+
+			.Message>* {
+				margin: 10px;
 			}
 
 			main {
 				margin: auto;
 				display: flex;
 				gap: 5%;
+				padding: 20px;
+				background-color: white;
 			}
 
 			section {
@@ -47,15 +63,15 @@
 
 	<body>
 		<div class="container">
-			<main>
+			<main class="border border-3 rounded">
 				<section>
 					<img src="Resources/YAPE-LOGO.png" alt="LogoYape" width="80px" height="70px">
-					<div class="prueba">
+					<div class="Message">
 						<h4>Bienvenido Yaper@</h4>
 						<% if (request.getAttribute("mensaje") !=null) { %>
-							<h5>${mensaje}</h5>
+							<small class="alter alert-danger">${mensaje}</small>
 							<% } else { %>
-								<small>Ingresa tus datos para iniciar Sesión</small>
+								<small>Ingresa tus datos</small>
 								<% } %>
 					</div>
 				</section>
