@@ -15,8 +15,8 @@
 
         <head>
             <meta charset="ISO-8859-1">
-            <title>Client Dashboard</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <title>Client Dashboard</title>
             <style>
                 .container {
                     margin: 65px;

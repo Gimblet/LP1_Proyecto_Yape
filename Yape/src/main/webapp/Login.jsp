@@ -4,42 +4,83 @@
 
 	<head>
 		<meta charset="ISO-8859-1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<title>Login</title>
 		<style>
-			div {
+			.container {
 				display: flex;
-				flex-direction: column;
-				align-items: center;
 			}
 
-			.containerLogin {
-				align-self: center;
-				border: 3px solid purple;
-				padding: 60px 100px 60px 100px;
+			main {
+				margin: auto;
+				display: flex;
+				gap: 5%;
+			}
+
+			section {
+				margin: auto;
+				display: flex;
+			}
+
+			section img {
+				margin: auto;
+			}
+
+			aside {
+				display: flex;
+				padding: 30px;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+			}
+
+			#btn-login:hover {
+				background-color: purple;
+				border-color: purple;
+				transition: 0.45s;
 			}
 		</style>
 	</head>
 
 	<body>
-		<div>
-			<div class="containerLogin">
-				<img src="Resources/YAPE-LOGO.png" alt="LogoYape" width="80px" height="70px">
-				<h4>Bienvenido</h4>
-				<form action="Servlet" method="post">
-					<label>Numero</label><br><br>
-					<input type="text" name="txtNumero" required><br><br>
-					<label>Clave</label><br><br>
-					<input type="text" name="txtClave" required><br><br>
-					<label>Tipo de Usuario</label><br><br>
-					<select name="cboTipoUsuario" required>
-						<option value="Cliente">Cliente</option>
-						<option value="Admin">Admin</option>
-						<option value="HeadAdmin">HeadAdmin</option>
-					</select>
-					<br><br><br>
-					<input type="submit" name="type" value="Login">
-				</form>
-			</div>
+		<div class="container">
+			<main>
+				<section>
+					<img src="Resources/YAPE-LOGO.png" alt="LogoYape" width="80px" height="70px">
+					<div class="prueba">
+						<h4>Bienvenido Yaper@</h4>
+						<% if (request.getAttribute("mensaje") !=null) { %>
+							<h5>${mensaje}</h5>
+							<% } else { %>
+								<small>Ingresa tus datos para iniciar Sesión</small>
+								<% } %>
+					</div>
+				</section>
+				<aside>
+					<form action="Servlet" method="post">
+						<div class="form-group">
+							<label><strong>Numero</strong></label>
+							<input class="form-control" type="text" name="txtNumero" required maxlength="9" minlength="9">
+						</div>
+						<div class="form-group">
+							<label><strong>Clave</strong></label>
+							<input class="form-control" type="text" name="txtClave" required maxlength="99" minlength="4">
+						</div>
+						<div class="form-group">
+							<label><strong>Tipo de Usuario</strong></label>
+							<select name="cboTipoUsuario" class="form-control" required>
+								<option value="Cliente">Cliente</option>
+								<option value="Admin">Admin</option>
+								<option value="HeadAdmin">HeadAdmin</option>
+							</select>
+						</div>
+						<input class="btn btn-primary" id="btn-login" type="submit" name="type" value="Login">
+					</form>
+				</aside>
+			</main>
 		</div>
 	</body>
 

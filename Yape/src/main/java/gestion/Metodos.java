@@ -28,9 +28,9 @@ public class Metodos implements IntYape {
 			psm.setString(3, tipoUsr);
 			rs = psm.executeQuery();
 			rs.next();
-			if(rs.getInt("Numero") != numero) return null;
-			if(!rs.getString("Clave").equals(clave)) return null;
-			if (!rs.getString("TipoUsuario").equals(tipoUsr)) return null;
+			if(rs.getInt("Numero") == 0) return null;
+			if(rs.getString("Clave") == null) return null;
+			if (rs.getString("TipoUsuario") == null) return null;
 			loginData.setNumero(rs.getInt("numero"));
 			loginData.setClave(rs.getString("clave"));
 			loginData.setTipoUsuario(rs.getString("TipoUsuario"));
@@ -46,7 +46,8 @@ public class Metodos implements IntYape {
 			psm.setString(3, loginData.getTipoUsuario());
 			psm.executeUpdate();
 		} catch(Exception e) {
-			System.out.println("Error en el bloque Try Catch de Metodos-Login");
+			System.out.println("Error en el bloque Try Catch de Metodos-Login || Datos incorrectos");
+			return null;
 		} finally {
 			try {
 				if(con != null) MysqlConexion.closeConnection(con);

@@ -46,7 +46,7 @@ public class Servlet extends HttpServlet {
 		case "Cerrar Sesion"           : cerrarCurrentLogin(request, response); break;
 		default: 
 			cerrarCurrentLogin(request, response);
-			request.setAttribute("Mensaje", "Ocurrió un Problema con el Type");
+			System.out.println("Ocurrió un Problema los Type del Servlet, las Sesiones anteriores se han invalidado");
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 	}
@@ -63,7 +63,8 @@ public class Servlet extends HttpServlet {
 			if(isUser.getTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
 			if(isUser.getTipoUsuario().equals("HeadAdmin")) request.getRequestDispatcher("headAdminDashboard.jsp").forward(request, response);
 		} else {
-			System.out.println("Usuario/Contraseña o rol incorrecto");
+			request.setAttribute("mensaje", "Usuario/Contraseña o rol incorrecto");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 	}
 	
