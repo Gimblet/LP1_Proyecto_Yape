@@ -68,6 +68,10 @@
 				<label class="text-secondary">Monto</label>
 				<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
 			</div>
+			<div class="form-group">
+				<label class="text-secondary">Estado</label>
+				<input class="form-control" type="text" name="txtEstado" value="<%= (item != null)? item.getEstado():"" %>">
+			</div>
 			<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
 		</form>
 	</main>

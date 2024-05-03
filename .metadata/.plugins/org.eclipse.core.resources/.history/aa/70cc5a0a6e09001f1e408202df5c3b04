@@ -1,0 +1,94 @@
+<%@page import="data.ClaseUtilitaria"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%
+ClaseUtilitaria item = null;
+if (request.getAttribute("infoYape") != null) {
+	item = (ClaseUtilitaria) request.getAttribute("infoYape");
+}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="Resources/bootstrap.min.css" rel="stylesheet">
+<style>
+body{
+	background-color: purple;
+}
+main{
+	background-color: white;
+}
+.noEditables {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	margin: 13px;
+}
+
+.noEditables div{
+	padding: 6.5px;
+}
+</style>
+<title>Editar Yape</title>
+</head>
+<body>
+	<div class="container">
+		<main>
+			<section>
+				<form action="Servlet" method="post">
+					<div class="noEditables border rounded">
+						<div class="form-group">
+							<label class="text-secondary">ID Yape : <strong><%=(item != null) ? item.getIdYape() : ""%></strong></label>
+							<input type="hidden" name="YapeId"
+								value="<%=item.getIdYape()%>">
+						</div>
+						<div class="form-group">
+							<label class="text-secondary">Numero del Remitente : <strong><%=(item != null) ? item.getNumeroRemitente() : ""%></strong></label>
+							<input type="hidden" name="txtNumeroRemitente"
+								value="<%=(item != null) ? item.getNumeroRemitente() : ""%>">
+						</div>
+						<div class="form-group">
+							<label class="text-secondary">Nombre del Remitente : <strong><%=(item != null) ? item.getNombreRemitente() : ""%></strong></label>
+							<input type="hidden" name="txtNombreRemitente"
+								value="<%=(item != null) ? item.getNombreRemitente() : ""%>">
+						</div>
+						<div class="form-group">
+							<label class="text-secondary">Nombre del Recipiente : <strong><%=(item != null) ? item.getNombreRecipiente() : ""%></strong></label>
+							<input class="form-control" type="hidden"
+								name="txtNombreRecipiente"
+								value="<%=(item != null) ? item.getNombreRecipiente() : ""%>">
+						</div>
+						<div class="form-group">
+							<label class="text-secondary">Estado : <strong><%=(item != null) ? item.getEstado() : ""%></strong></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="text-secondary">Numero del Recipiente</label> <input
+							class="form-control" type="text" name="txtNumeroRecipiente"
+							value="<%=(item != null) ? item.getNumeroRecipiente() : ""%>">
+					</div>
+					<div class="form-group">
+						<label class="text-secondary">Monto</label> <input
+							class="form-control" type="text" name="txtMonto"
+							value="<%=(item != null) ? item.getMontoRecipiente() : ""%>">
+						<input type="hidden" name="txtMontoAntiguo"
+							value="<%=(item != null) ? item.getMontoRecipiente() : ""%>">
+					</div>
+					<br>
+					<small class="alter alert-danger">
+						Al momento de confirmar los cambios, se aplicará por defecto la
+						Fecha y Hora actual. <br> De igual manera el estado cambiará
+						de CORRIENTE a MODIFICADO <br> Esta ACCIÓN es IRREVERSIBLE,
+						proceder con precaución.
+					</small>
+					<div>
+						<input class="btn btn-primary" type="submit" name="type" value="Editar Yape"> 
+						<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a>
+					</div>
+				</form>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

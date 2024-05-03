@@ -689,7 +689,7 @@ public class Metodos implements IntYape {
 			String sql;
 			
 			// Revisa que tipo de usuario somos y hace un Query en base a eso
-			if(obtenerTipoUsuario().equals("Cliente")) {
+			if(obtenerTipoUsuario().equals("Cliente") && id != -9) {
 				sql = "SELECT * FROM Yapes WHERE IdYape=? AND(NumeroRealizante=? OR NumeroRecibiente=?)";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, id);
@@ -698,7 +698,7 @@ public class Metodos implements IntYape {
 				rs = psm.executeQuery();
 			} 
 			
-			else if(obtenerTipoUsuario().equals("Admin")) {
+			else if(obtenerTipoUsuario().equals("Admin") && id != -9) {
 				sql = "SELECT * FROM Yapes WHERE IdYape=?";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, id);
@@ -706,7 +706,8 @@ public class Metodos implements IntYape {
 			}
 			
 			//Guarda la informacion en info de tipo clase utilitaria
-			if(rs.next()) {
+			if(rs != null) {
+				rs.next();
 				info.setIdYape(rs.getInt("IdYape"));
 				info.setNumeroRemitente(rs.getInt("NumeroRealizante"));
 				info.setNumeroRecipiente(rs.getInt("NumeroRecibiente"));
@@ -717,7 +718,7 @@ public class Metodos implements IntYape {
 				info.setRespuesta("Correcto");
 			} else { 
 				info.setRespuesta("ID Incorrecto/Invalido");
-				psm.close(); rs.close();
+				psm.close();
 				return info;
 			}
 			psm.close(); rs.close();
@@ -740,6 +741,7 @@ public class Metodos implements IntYape {
 			else System.out.println("No se Encontraron nombres con el numero de recipiente especificado"); // TODO cambiar por info.set Repuesta Usuario no encontrado/Eliminado
 			
 		} catch(Exception e) {
+			e.printStackTrace();
 			System.out.println("Error en el try catch de Metodos.ObtenerInformacionYape");
 		} finally {
 			try {

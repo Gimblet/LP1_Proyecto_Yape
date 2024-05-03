@@ -135,7 +135,12 @@ public class Servlet extends HttpServlet {
 			id= Integer.parseInt(request.getParameter("id"));
 		}
 		else if(request.getParameter("txtBuscar") != null && !request.getParameter("txtBuscar").equals("")) {
-			id = Integer.parseInt(request.getParameter("txtBuscar"));
+			//Verifica que el id ingresado no sea una letra o caracter ilegal
+			try {
+				id = Integer.parseInt(request.getParameter("txtBuscar"));
+			} catch(NumberFormatException e) {
+				id = -9;
+			}
 		}
 		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
 		if(dataYape.getRespuesta().equals("ID Incorrecto/Invalido")) {
