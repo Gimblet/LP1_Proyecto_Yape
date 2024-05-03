@@ -130,6 +130,20 @@ public class Metodos implements IntYape {
 				return respuesta;
 			} psm.close(); rs.close();
 			
+			//Validar que no el numero no sea propio ni a un administrador
+			sql = "SELECT Numero, TipoUsuario FROM Logins WHERE Numero=?";
+			psm = con.prepareStatement(sql);
+			psm.setInt(1, numero);
+			rs = psm.executeQuery();
+			rs.next();
+			if(obtenerUsuario() == numero) {
+				respuesta.setRespuesta("No se puede Yapear a usted mismo/a");
+				return respuesta;
+			} else if(rs.getString("TipoUsuario").equals("Admin") || rs.getString("TipoUsuario").equals("HeadAdmin")) {
+				respuesta.setRespuesta("Operacion Invalida");
+				return respuesta;
+			} psm.close(); rs.close();
+			
 			// Validar Que el saldo de la cuenta es suficiente		
 			sql = "SELECT Saldo from logins WHERE numero=?;";
 			psm = con.prepareStatement(sql);

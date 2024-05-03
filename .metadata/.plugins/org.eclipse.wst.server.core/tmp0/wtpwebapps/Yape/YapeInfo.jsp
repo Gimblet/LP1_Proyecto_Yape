@@ -11,52 +11,66 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="Resources/bootstrap.min.css" rel="stylesheet">
 	<title>Informacion de Yape</title>
+	<style>
+		main{
+			margin: 100px;
+			background-color: white;
+		}
+		
+		body{
+			background-color: purple;
+		}
+		
+		form{
+			display: flex;
+			flex-direction: column;
+			padding: 80px;
+			gap: 13px;
+		}
+		
+	</style>
 </head>
 <body>
-	<form action="Servlet" method="post">
-		<div class="form-group">
-			<label class="text-secondary">ID Yape</label>
-			<input class="form-control" type="text" name="txtYapeId" value="<%= (item != null)? item.getIdYape():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Numero del Remitente</label>
-			<input class="form-control" type="text" name="txtNumeroRemitente" value="<%= (item != null)? item.getNumeroRemitente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Nombre del Remitente</label>
-			<input class="form-control" type="text" name="txtNombreRemitente" value="<%= (item != null)? item.getNombreRemitente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Numero del Recipiente</label>
-			<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getNumeroRecipiente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Nombre del Recipiente</label>
-			<input class="form-control" type="text" name="txtNombreRecipiente" value="<%= (item != null)? item.getNombreRecipiente():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Fecha</label>
-			<input class="form-control" type="text" name="txtFecha" value="<%= (item != null)? item.getFecha():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Hora</label>
-			<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getHora():"" %>">
-		</div>
-		<br>
-		<div class="form-group">
-			<label class="text-secondary">Monto</label>
-			<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
-		</div>
-		<br>
-	</form>
-	<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
+<div class="container">
+	<main class="border rounded">
+		<form action="Servlet" method="post" class="border rounded">
+			<div class="form-group">
+				<label class="text-secondary">ID Yape</label>
+				<input class="form-control" type="text" name="txtYapeId" value="<%= (item != null)? item.getIdYape():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Numero del Remitente</label>
+				<input class="form-control" type="text" name="txtNumeroRemitente" value="<%= (item != null)? item.getNumeroRemitente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Nombre del Remitente</label>
+				<input class="form-control" type="text" name="txtNombreRemitente" value="<%= (item != null)? item.getNombreRemitente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Numero del Recipiente</label>
+				<input class="form-control" type="text" name="txtNumeroRecipiente" value="<%= (item != null)? item.getNumeroRecipiente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Nombre del Recipiente</label>
+				<input class="form-control" type="text" name="txtNombreRecipiente" value="<%= (item != null)? item.getNombreRecipiente():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Fecha</label>
+				<input class="form-control" type="text" name="txtFecha" value="<%= (item != null)? item.getFecha():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Hora</label>
+				<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getHora():"" %>">
+			</div>
+			<div class="form-group">
+				<label class="text-secondary">Monto</label>
+				<input class="form-control" type="text" name="txtDocente" value="<%= (item != null)? item.getMontoRecipiente():"" %>">
+			</div>
+			<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
+		</form>
+	</main>
+</div>
 </body>
 </html>

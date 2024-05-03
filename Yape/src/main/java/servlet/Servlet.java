@@ -134,7 +134,7 @@ public class Servlet extends HttpServlet {
 		if(request.getParameter("id") != null) {
 			id= Integer.parseInt(request.getParameter("id"));
 		}
-		else if(request.getParameter("txtBuscar") != null) {
+		else if(request.getParameter("txtBuscar") != null && !request.getParameter("txtBuscar").equals("")) {
 			id = Integer.parseInt(request.getParameter("txtBuscar"));
 		}
 		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);

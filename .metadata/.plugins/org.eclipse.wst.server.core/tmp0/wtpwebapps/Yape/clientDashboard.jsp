@@ -2,8 +2,10 @@
     <%@ page import="data.Yapes" %>
         <%@ page import="data.Logins" %>
             <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+            <%@ page import="gestion.Metodos" %>
                 <% 
                 double dinero=0.0; 
+                Metodos metodo = new Metodos();
                 if(request.getAttribute("saldo") !=null){ 
                 	Logins saldo=(Logins)request.getAttribute("saldo"); 
                 	dinero=saldo.getSaldo(); } 
@@ -29,6 +31,7 @@
                                     margin: auto;
                                     padding: 50px;
                                     margin-top: 100px;
+                                    margin-bottom: 50px;
                                 }
 
                                 #servlet-btn {
@@ -73,7 +76,7 @@
                                 <main class="border rounded">
                                     <section id="servlet-btn">
                                     	<!--  FALTA PONER NOMBRE EN BIENVENIDO -->
-                                        <h1>Bienvenido</h1>
+                                        <h1>Bienvenido <%= metodo.obtenerUsuario() %></h1>
                                         <h3>Saldo : <% if(dinero==0.0) { %>OCULTO<% } else { %>
                                                     <%= dinero %>
                                                         <% } %>

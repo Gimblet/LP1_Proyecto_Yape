@@ -12,68 +12,114 @@
 
     <head>
         <meta charset="ISO-8859-1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="Resources/bootstrap.min.css" rel="stylesheet">
         <title>Nuevo Yapeo</title>
         <style>
+        	body{
+        		background-color: purple;
+				margin: 0;
+        	}
+        
             .container {
                 display: flex;
-                flex-direction: column;
+            }
+            
+            main{
+            	margin: auto;
+            	display: flex;
+            	gap: 20px;
+            	margin-top: 150px;
+            }
+            
+            aside{
+            	display: flex;
+            	flex-direction: column;
+            	justify-content: center;
+            	gap: 12px;
+            }
+            
+            aside div{
+            	padding: 15px;
+            	background-color: white;
             }
 
             .form-container {
                 align-self: center;
-                border: 4px solid blue;
-                padding: 45px 60px 45px 60px;
+                padding: 50px 50px 50px 50px;
+                background-color: white;
             }
 
             input:hover {
                 cursor: pointer;
+            }
+            
+            #ver1{
+            	width: max-content;
+            }
+            
+            #ola{
+            	display: flex;
+            	flex-direction: column;
+            	gap: 15px;
+            }
+            
+            section, aside{
+            	witdh: 350px;
             }
         </style>
     </head>
 
     <body>
         <div class="container">
-            <h3>Yapeando desde : <%= numero %></h3>
-            <div class="form-container">
-                <form action="Servlet" method="post">
-                <%
-                  String respuesta = "Esperando Verificacion";
-                  if(request.getAttribute("ValidacionYape") != null){
-                	  ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
-                	  if(item.getRespuesta().equals("Datos Conformes")){
-                		  respuesta = item.getRespuesta() + "<br>" + 
-                          "Estas Yapeando a " + item.getNombreRecipiente() + "<br>" +
-                          "El monto de : " + "S/" + item.getMontoRecipiente();
-                	  }
-                	  else{
-                		  respuesta = item.getRespuesta();
-                	  }
-                  }    	
-                %>
-                    <h2>Yapear</h2>
-                    <label>Numero</label><br><br>
-                    <input required type="text" name="txtNumero"
-                    <%
-                		if(request.getAttribute("ValidacionYape") != null){
-                  	  		ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
-							if(item.getRespuesta().equals("Datos Conformes")){
+        <main>
+        	<section>
+        		<div class="form-container border rounded">
+                	<form action="Servlet" method="post">
+                	<%
+                  	String respuesta = "Esperando Verificacion";
+                  	if(request.getAttribute("ValidacionYape") != null){
+                	  	ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
+                	  	if(item.getRespuesta().equals("Datos Conformes")){
+                		  	respuesta = "Estas Yapeando a : " + item.getNombreRecipiente() + "<br>" +
+                          	"El monto de : " + "S/" + item.getMontoRecipiente();
+                	  	}
+                	  	else{
+                			  respuesta = item.getRespuesta();
+                	 	 }
+                  	}    	
                 	%>
-                     value=<%= item.getNumeroRecipiente() %> <%}} %>><br><br>
-                    <label>Monto</label><br><br>
-                    <input required type="text" name="txtMonto"
-                    <%
-                		if(request.getAttribute("ValidacionYape") != null){
-                  	  		ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
-							if(item.getRespuesta().equals("Datos Conformes")){
-                	%>
-                     value=<%= item.getMontoRecipiente() %><%}} %>><br><br>
-                    <input type="submit" name="type" value="Verificar">
-                    <h3><%= respuesta %></h3>
-                    <input type="submit" name="type" value="Yapear">
-                    <a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
-                </form>
-            </div>
+                    	<h2>Yapear</h2>
+                    	<div id="ola">
+                    		<div class="form-group">
+                    			<label>Numero</label>
+                    			<input class="form form-control" required type="text" name="txtNumero" maxlength="9" minlength="9" 
+                    			<% if(request.getAttribute("ValidacionYape") != null){
+                  	  			ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
+								if(item.getRespuesta().equals("Datos Conformes")){ %> value=<%= item.getNumeroRecipiente() %> <%}} %>>
+                    		</div>
+                    		<div class="form-group">
+                    			<label>Monto</label>
+                    			<input class="form form-control" required type="text" name="txtMonto" <% if(request.getAttribute("ValidacionYape") != null){
+                  	  			ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
+								if(item.getRespuesta().equals("Datos Conformes")){ %> value=<%= item.getMontoRecipiente()%> <%} }%>>
+                    		</div>
+                    		<input class="btn btn-secondary" type="submit" name="type" value="Verificar">
+                    	</div>
+                    	
+                	</form>
+            	</div>
+        	</section>
+        	<aside>
+        		<div class="border rounded" id="ver1">
+        			<h5>Yapeando desde : <%= numero %></h5>
+        		</div>
+        		<div class="border rounded" id="ver2">
+        			<h5><%= respuesta %></h5>
+					<input class="btn btn-primary" type="submit" name="type" value="Yapear">
+					<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a> 
+        		</div>
+        	</aside>
+        </main> 
         </div>
     </body>
 
