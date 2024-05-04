@@ -5,13 +5,17 @@
 		<item key="DIALOG_Y_ORIGIN" value="572"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="infoUsuario"/>
+		<item key="selection" value="consultarSaldo"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="consultarSaldo"/>
+			<item value="saldo"/>
+			<item value="obtenersaldo"/>
+			<item value="Listar"/>
 			<item value="infousuario"/>
 			<item value="update"/>
 			<item value="alter"/>
@@ -23,8 +27,6 @@
 			<item value="listar Usuarios"/>
 			<item value="consultar saldo"/>
 			<item value="obtenerinformacionyape"/>
-			<item value="obtenerTipoUsuario()"/>
-			<item value="now"/>
 		</list>
 		<list key="replacehistory">
 		</list>

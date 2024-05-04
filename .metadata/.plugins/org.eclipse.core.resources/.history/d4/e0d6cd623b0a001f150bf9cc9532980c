@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="Resources/bootstrap.min.css" rel="stylesheet">
+<style>
+	body{
+		background-color: purple;
+	}
+	main{
+		background-color:white;
+		width: max-content;
+		margin: auto;
+		margin-top: 100px;
+	}
+	section{
+		padding: 25px 40px 25px 40px;
+	}
+	form{
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+</style>
+<title>Nuevo Usuario</title>
+</head>
+<body>
+	<div class="container">
+		<main class="border rounded">
+			<section>
+				<h4>Agregar Usuario</h4>
+				<br>
+				<form action="Servlet" method="post">
+					<div class="form-group">
+						<label>Tipo de Usuario</label> 
+						<select class="form-control" name="cboTipoUsuario" onchange="updateSaldo()">
+							<option>Seleccionar Tipo de Usuario</option>
+							<option>Admin</option>
+							<option>Cliente</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="text-secondary">Nombres y Apellidos</label>
+						<input class="form-control not-selected" type="text" name="txtNombreApe" required>
+					</div>
+					<div class="form-group" id="saldoField">
+						<script>
+							const texts = document.getElementById('InputFieldID').readOnly = false;
+						
+							function updateSaldo() {
+								//Obtener Variables
+								var selectedOption = document.getElementsByName("cboTipoUsuario")[0].value;
+								var saldoField = document.getElementById("saldoField");
+							
+								//Crear input Saldo si es que Cliente esta selecionado
+								if (selectedOption === "Cliente") {
+									saldoField.innerHTML = '<label class="text-secondary">Saldo</label><input class="form-control" required name="txtSaldo" type="text">';
+								} else {
+									texts.
+									saldoField.innerHTML = '';
+								}
+							}
+						</script>
+					</div>
+					<div class="form-group">
+						<label class="text-secondary">Numero</label> 
+						<input class="form-control" required name="txtNumero" type="text">
+					</div>
+					<div class="form-group">
+						<label class="text-secondary">Clave</label>
+						<input class="form-control" required type="text" name="txtClave">
+					</div>
+					<div class="btn-group">
+						<input class="btn btn-primary" type="submit" name="type" value="Registrar Usuario">
+						<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a>
+					</div>
+				</form>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

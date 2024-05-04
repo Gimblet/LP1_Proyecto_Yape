@@ -73,8 +73,7 @@ small{
 						</div>
 						<div class="form-group">
 							<label class="text-secondary">ID Yape : <strong><%=(item != null) ? item.getIdYape() : ""%></strong></label>
-							<input type="hidden" name="YapeId"
-								value="<%=item.getIdYape()%>">
+							<input type="hidden" name="YapeId" value="<%=item.getIdYape()%>">
 						</div>
 						<div class="form-group">
 							<label class="text-secondary">Numero del Remitente : <strong><%=(item != null) ? item.getNumeroRemitente() : ""%></strong></label>
