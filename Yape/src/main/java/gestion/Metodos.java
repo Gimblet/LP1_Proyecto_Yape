@@ -112,6 +112,32 @@ public class Metodos implements IntYape {
 		return tipoUsuario;
 	}
 	
+	public String obtenerNombre() {
+		Connection con = null;
+		PreparedStatement psm = null;
+		ResultSet rs = null;
+		String tipoUsuario = null;
+		try {
+			con = MysqlConexion.getConexion();
+			String sql = "Select NombreApellidos from currentUsers;";
+			psm = con.prepareStatement(sql);
+			rs = psm.executeQuery();
+			rs.next();
+			tipoUsuario = rs.getString("NombreApellidos");
+		} catch(Exception e) {
+			System.out.println("No se pudo Obtener el Usuario/No Existe");
+		} finally {
+			try {
+				if(con != null) MysqlConexion.closeConnection(con);
+				if(psm != null) psm.close();
+				if(rs != null) rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return tipoUsuario;
+	}
+	
 	public ClaseUtilitaria validarYape(int numero, double monto) { //MAYBE
 		Connection con = null;
 		PreparedStatement psm = null;

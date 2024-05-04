@@ -83,7 +83,7 @@
 						</div>
 						<div class="form-group">
 							<label><strong>Clave</strong></label>
-							<input class="form-control" type="password" name="txtClave" required maxlength="99" minlength="4">
+							<input class="form-control" type="password" name="txtClave" required maxlength="99" minlength="3">
 						</div>
 						<div class="form-group">
 							<label><strong>Tipo de Usuario</strong></label>
