@@ -54,13 +54,7 @@ public class Servlet extends HttpServlet {
 	protected void loginUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
 		metodo.cerrarSesion();
-		
-		//Validar si el numero ingresado empieza con 9
-		String Snumero = request.getParameter("txtNumero");
-		if(!Snumero.startsWith("9")) {
-			request.setAttribute("mensaje", "Número Invalido");
-			request.getRequestDispatcher("Login.jsp").forward(request, response);
-		} try {
+		try {
 			//Validar si el numero ingresado aparte de iniciar con 9 tiene otros numeros
 			Integer.parseInt(request.getParameter("txtNumero"));
 		} catch(NumberFormatException e) {
@@ -95,7 +89,9 @@ public class Servlet extends HttpServlet {
 		Metodos metodo = new Metodos();
 		int numero = Integer.parseInt(request.getParameter("txtNumero"));
 		double monto = Double.parseDouble(request.getParameter("txtMonto"));
+		System.out.println("Llege 1");
 		metodo.yapear(numero, monto);
+		System.out.println("Llege 2");
 		request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
 	}
 	
@@ -130,6 +126,7 @@ public class Servlet extends HttpServlet {
 	
 	protected void buscarYape(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Metodos metodo = new Metodos();
+		ClaseUtilitaria dataYape;
 		int id = 0;
 		if(request.getParameter("id") != null) {
 			id= Integer.parseInt(request.getParameter("id"));
@@ -139,10 +136,12 @@ public class Servlet extends HttpServlet {
 			try {
 				id = Integer.parseInt(request.getParameter("txtBuscar"));
 			} catch(NumberFormatException e) {
-				id = -9;
+				request.setAttribute("IDInvalido", "ID Incorrecto/Invalido");
+				if(metodo.obtenerTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
+				else if(metodo.obtenerTipoUsuario().equals("Admin")) request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
 			}
 		}
-		ClaseUtilitaria dataYape = metodo.obtenerInformacionYape(id);
+		dataYape = metodo.obtenerInformacionYape(id);
 		if(dataYape.getRespuesta().equals("ID Incorrecto/Invalido")) {
 			request.setAttribute("IDInvalido", "ID Incorrecto/Invalido");
 			if(metodo.obtenerTipoUsuario().equals("Cliente")) request.getRequestDispatcher("clientDashboard.jsp").forward(request, response);
@@ -207,7 +206,7 @@ public class Servlet extends HttpServlet {
 		double monto = Double.parseDouble(request.getParameter("txtMonto"));
 		double OGmonto = Double.parseDouble(request.getParameter("txtMontoAntiguo"));
 		
-		if(metodo.validarYapeEditar(numeroRec, numeroRem, monto)) {
+		if(metodo.validarYapeEditar(numeroRec, numeroRem, monto, OGmonto)) {
 			metodo.editarYape(id, numeroRec, numeroRem, monto, OGmonto);
 		}
 		request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);

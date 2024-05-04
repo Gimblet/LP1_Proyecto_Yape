@@ -15,7 +15,7 @@ public interface IntYape {
 	String obtenerTipoUsuario();
 	void cerrarSesion();
 	ClaseUtilitaria validarYape(int numero, double monto);
-	boolean validarYapeEditar(int numeroRec, int numeroRem, double monto);
+	boolean validarYapeEditar(int numeroRec, int numeroRem, double monto, double OGmonto);
 	void editarYape(int id, int numeroRec, int numeroRem, double monto, double OGmonto);
 	void eliminarYape(int id, int numeroRec, int numeroRem, double OGmonto);
 	public void eliminarUsuario(int id);

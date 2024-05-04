@@ -69,7 +69,8 @@
 					<div class="Message">
 						<h4>Bienvenido Yaper@</h4>
 						<% if (request.getAttribute("mensaje") !=null) { %>
-							<small class="alter alert-danger">${mensaje}</small>
+							<br>
+							<small class="alert alert-danger">${mensaje}</small>
 							<% } else { %>
 								<small>Ingresa tus datos</small>
 								<% } %>

@@ -209,7 +209,7 @@ public class Metodos implements IntYape {
 		return respuesta;
 	}
 	
-	public boolean validarYapeEditar(int numeroRec, int numeroRem, double monto) {
+	public boolean validarYapeEditar(int numeroRec, int numeroRem, double monto, double OGmonto) {
 		Connection con = null;
 		PreparedStatement psm = null;
 		ResultSet rs = null;
@@ -233,9 +233,12 @@ public class Metodos implements IntYape {
 			psm.setInt(1, numeroRem);
 			rs = psm.executeQuery();
 			rs.next();
-			if(rs.getDouble("Saldo") < monto) {
-				System.out.println("No hubo saldo suficiente al intentar editar");
-				return respuesta;
+			double residuoMonto = monto - OGmonto;
+			double nuevoSaldo = rs.getDouble("Saldo") - residuoMonto;
+			if(nuevoSaldo < 0) {
+				System.out.println("No hubo suficiente saldo de parte del remitente");
+				psm.close(); rs.close();
+				return respuesta = false;
 			}
 			respuesta = true;
 			
@@ -718,7 +721,7 @@ public class Metodos implements IntYape {
 			String sql;
 			
 			// Revisa que tipo de usuario somos y hace un Query en base a eso
-			if(obtenerTipoUsuario().equals("Cliente") && id != -9) {
+			if(obtenerTipoUsuario().equals("Cliente")) {
 				sql = "SELECT * FROM Yapes WHERE IdYape=? AND(NumeroRealizante=? OR NumeroRecibiente=?)";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, id);
@@ -727,7 +730,7 @@ public class Metodos implements IntYape {
 				rs = psm.executeQuery();
 			} 
 			
-			else if(obtenerTipoUsuario().equals("Admin") && id != -9) {
+			else if(obtenerTipoUsuario().equals("Admin")) {
 				sql = "SELECT * FROM Yapes WHERE IdYape=?";
 				psm = con.prepareStatement(sql);
 				psm.setInt(1, id);
@@ -735,8 +738,7 @@ public class Metodos implements IntYape {
 			}
 			
 			//Guarda la informacion en info de tipo clase utilitaria
-			if(rs != null) {
-				rs.next();
+			if(rs.next() && rs != null) {
 				info.setIdYape(rs.getInt("IdYape"));
 				info.setNumeroRemitente(rs.getInt("NumeroRealizante"));
 				info.setNumeroRecipiente(rs.getInt("NumeroRecibiente"));

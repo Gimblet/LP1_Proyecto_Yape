@@ -105,7 +105,6 @@
                     		</div>
                     		<input class="btn btn-primary" type="submit" name="type" value="Verificar">
                     	</div>
-                    	
                 	</form>
             	</div>
         	</section>
@@ -115,8 +114,17 @@
         		</div>
         		<div class="border rounded" id="ver2">
         			<h5><%= respuesta %></h5>
-					<input class="btn btn-primary" type="submit" name="type" value="Yapear">
-					<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a> 
+        			<form action="Servlet" method="post">
+        				<input class="form form-control" required type="hidden" name="txtNumero" maxlength="9" minlength="9" 
+                    	<% if(request.getAttribute("ValidacionYape") != null){
+                  		ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
+						if(item.getRespuesta().equals("Datos Conformes")){ %> value=<%= item.getNumeroRecipiente() %> <%}} %>>
+						<input class="form form-control" required type="hidden" name="txtMonto" <% if(request.getAttribute("ValidacionYape") != null){
+                  		ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
+						if(item.getRespuesta().equals("Datos Conformes")){ %> value=<%= item.getMontoRecipiente()%> <%} }%>>
+						<input class="btn btn-primary" type="submit" name="type" value="Yapear">
+						<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a> 
+        			</form>
         		</div>
         	</aside>
         </main> 

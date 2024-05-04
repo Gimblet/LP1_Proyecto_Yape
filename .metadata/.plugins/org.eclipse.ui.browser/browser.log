@@ -1955,3 +1955,11 @@ may. 04, 2024 12:11:57.998 [21356:18788:0504/121157.998:ERROR:CONSOLE(1)] "Uncau
 may. 04, 2024 13:00:28.540 NEW SESSION
 may. 04, 2024 13:00:28.540 [15300:17068:0504/130028.539:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
 may. 04, 2024 13:00:30.757 [15300:17068:0504/130030.757:ERROR:device_event_log_impl.cc(195)] [13:00:30.757] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+may. 04, 2024 13:06:46.141 NEW SESSION
+may. 04, 2024 13:06:46.141 [19032:12596:0504/130646.139:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 04, 2024 13:06:48.465 [19032:12596:0504/130648.465:ERROR:device_event_log_impl.cc(195)] [13:06:48.464] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 04, 2024 13:13:16.379 [21068:12892:0504/131316.379:ERROR:chrome_browser_cloud_management_controller.cc(161)] Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+may. 04, 2024 13:13:18.552 [21068:12892:0504/131318.552:ERROR:device_event_log_impl.cc(195)] [13:13:18.552] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 04, 2024 14:12:31.832 [21068:12892:0504/141231.831:ERROR:device_event_log_impl.cc(195)] [14:12:31.829] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+may. 04, 2024 14:12:31.863 [21068:12892:0504/141231.862:ERROR:device_event_log_impl.cc(195)] [14:12:31.862] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
