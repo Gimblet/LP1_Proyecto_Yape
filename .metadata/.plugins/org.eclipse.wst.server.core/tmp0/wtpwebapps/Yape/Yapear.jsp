@@ -103,7 +103,7 @@
                   	  			ClaseUtilitaria item = (ClaseUtilitaria) request.getAttribute("ValidacionYape");
 								if(item.getRespuesta().equals("Datos Conformes")){ %> value=<%= item.getMontoRecipiente()%> <%} }%>>
                     		</div>
-                    		<input class="btn btn-secondary" type="submit" name="type" value="Verificar">
+                    		<input class="btn btn-primary" type="submit" name="type" value="Verificar">
                     	</div>
                     	
                 	</form>
@@ -116,7 +116,7 @@
         		<div class="border rounded" id="ver2">
         			<h5><%= respuesta %></h5>
 					<input class="btn btn-primary" type="submit" name="type" value="Yapear">
-					<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a> 
+					<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a> 
         		</div>
         	</aside>
         </main> 

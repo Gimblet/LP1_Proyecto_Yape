@@ -96,23 +96,18 @@ form div {
 				<div>
 					<form action="Servlet" method="post">
 						<div id="asu" class="container">
-							<input class="btn btn-primary" type="submit" value="Nuevo Yapeo"
-								name="type"> <input class="btn btn-primary"
-								type="submit" value="Consultar Saldo" name="type"> <input
-								class="btn btn-primary" type="submit" value="Historial de Yapes"
-								name="type">
+							<input class="btn btn-primary" type="submit" value="Nuevo Yapeo" name="type"> 
+							<input class="btn btn-primary" type="submit" value="Consultar Saldo" name="type"> 
+							<input class="btn btn-primary" type="submit" value="Historial de Yapes" name="type">
 							<div class="buscarContainer">
-								<input class="btn btn-primary" type="submit" value="Buscar Yape"
-									name="type"> <input class="form form-control" size="8"
-									type="text" name="txtBuscar"
+								<input class="btn btn-primary" type="submit" value="Buscar Yape" name="type"> 
+									<input class="form form-control" size="8" type="text" name="txtBuscar"
 									<%String IDStatus = "Ingresa el ID";
-if (request.getAttribute("IDInvalido") != null) {
-	IDStatus = (String) request.getAttribute("IDInvalido");
-}%>
-									placeholder="<%=IDStatus%>">
+										if (request.getAttribute("IDInvalido") != null) {
+											IDStatus = (String) request.getAttribute("IDInvalido");
+									}%> placeholder="<%=IDStatus%>">
 							</div>
-							<input class="btn btn-primary" id="cerrar" type="submit"
-								value="Cerrar Sesion" name="type">
+							<input class="btn btn-primary" id="cerrar" type="submit" value="Cerrar Sesion" name="type">
 						</div>
 					</form>
 				</div>

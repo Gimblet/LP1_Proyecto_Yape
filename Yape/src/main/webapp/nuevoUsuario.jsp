@@ -43,7 +43,7 @@
 					</div>
 					<div class="form-group">
 						<label class="text-secondary">Nombres y Apellidos</label>
-						<input class="form-control texts" type="text" name="txtNombreApe" required disabled>
+						<input class="form-control texts" type="text" name="txtNombreApe" required disabled maxlength="99" minlength="3">
 					</div>
 					<div class="form-group" id="saldoField">
 						<script>
@@ -77,11 +77,11 @@
 					</div>
 					<div class="form-group">
 						<label class="text-secondary">Numero</label> 
-						<input class="form-control texts" required name="txtNumero" type="text" disabled>
+						<input class="form-control texts" required name="txtNumero" type="text" disabled maxlength="9" minlength="9">
 					</div>
 					<div class="form-group">
 						<label class="text-secondary">Clave</label>
-						<input class="form-control texts" required type="text" name="txtClave" disabled>
+						<input class="form-control texts" required type="text" name="txtClave" disabled maxlength="99" minlength="3">
 					</div>
 					<div class="btn-group">
 						<input class="btn btn-primary" type="submit" name="type" value="Registrar Usuario">

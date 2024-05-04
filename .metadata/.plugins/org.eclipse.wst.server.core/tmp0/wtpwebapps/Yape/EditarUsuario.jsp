@@ -82,25 +82,22 @@ section {
 					<div class="editables border rounded">
 						<h5 class="alert alert-success">Editables</h5>
 						<div class="form-group">
-							<label class="text-secondary">Nombres Y Apellidos</label> <input
-								class="form-control" type="text" name="txtNombreApellido"
-								value="<%=(item != null) ? item.getNombreApellidos() : ""%>">
+							<label class="text-secondary">Nombres Y Apellidos</label> 
+							<input class="form-control" type="text" name="txtNombreApellido" value="<%=(item != null) ? item.getNombreApellidos() : ""%>" maxlength="99" minlength="3">
 						</div>
 						<%
 						if (item.getTipoUsuario().equals("Cliente")) {
 						%>
 						<div class="form-group">
-							<label class="text-secondary">Saldo</label> <input
-								class="form-control" type="text" name="txtSaldo"
-								value="<%=(item != null) ? item.getSaldo() : ""%>">
+							<label class="text-secondary">Saldo</label> 
+							<input class="form-control" type="text" name="txtSaldo" value="<%=(item != null) ? item.getSaldo() : ""%>">
 						</div>
 						<%
 						}
 						%>
 						<div class="form-group">
-							<label class="text-secondary">Clave</label> <input
-								class="form-control" type="text" name="txtClave"
-								value="<%=(item != null) ? item.getClave() : ""%>">
+							<label class="text-secondary">Clave</label> 
+							<input class="form-control" type="text" name="txtClave" value="<%=(item != null) ? item.getClave() : ""%>" maxlength="99" minlength="3">
 						</div>
 						<div class="btn-group btns">
 							<input class="btn btn-primary" type="submit" name="type" value="Editar Usuario"> 
@@ -111,7 +108,5 @@ section {
 			</section>
 		</main>
 	</div>
-
-
 </body>
 </html>

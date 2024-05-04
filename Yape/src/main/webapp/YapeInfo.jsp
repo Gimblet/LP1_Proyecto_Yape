@@ -72,7 +72,7 @@
 				<label class="text-secondary">Estado</label>
 				<input class="form-control" type="text" name="txtEstado" value="<%= (item != null)? item.getEstado():"" %>">
 			</div>
-			<a href="Servlet?type=Volver" class="btn btn-primary">Regresar</a>
+			<a href="Servlet?type=Volver" class="btn btn-secondary">Regresar</a>
 		</form>
 	</main>
 </div>

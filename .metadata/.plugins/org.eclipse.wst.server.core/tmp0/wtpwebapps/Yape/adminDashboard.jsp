@@ -65,21 +65,17 @@ section {
 				<br>
 				<div class="group-btn">
 					<form action="Servlet" method="post">
-						<input class="btn btn-primary" type="submit" value="Mostrar Yapes"
-							name="type"> <input type="submit" class="btn btn-primary"
-							value="Mostrar Usuarios" name="type">
+						<input class="btn btn-primary" type="submit" value="Mostrar Yapes" name="type">
+						<input type="submit" class="btn btn-primary" value="Mostrar Usuarios" name="type">
 						<div class="btn-group">
-							<input class="btn btn-primary" type="submit" value="Buscar Yape"
-								name="type"> <input class="form form-control"
-								type="text" name="txtBuscar"
+							<input class="btn btn-primary" type="submit" value="Buscar Yape" name="type"> 
+							<input class="form form-control" type="text" name="txtBuscar"
 								<%String IDStatus = "Ingresa el ID del Yape";
-if (request.getAttribute("IDInvalido") != null) {
-	IDStatus = (String) request.getAttribute("IDInvalido");
-}%>
-								placeholder="<%=IDStatus%>">
+									if (request.getAttribute("IDInvalido") != null) {
+									IDStatus = (String) request.getAttribute("IDInvalido");
+								}%> placeholder="<%=IDStatus%>">
 						</div>
-						<input class="btn btn-primary" id="buscar" type="submit"
-							value="Cerrar Sesion" name="type">
+						<input class="btn btn-secondary" id="buscar" type="submit" value="Cerrar Sesion" name="type">
 					</form>
 					<br>
 				</div>

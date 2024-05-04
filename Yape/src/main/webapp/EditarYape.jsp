@@ -107,12 +107,12 @@ small{
 						<div class="form-group">
 							<label class="text-secondary">Numero del Recipiente</label> 
 							<input class="form-control" type="text" name="txtNumeroRecipiente"
-							value="<%=(item != null) ? item.getNumeroRecipiente() : ""%>">
+							value="<%=(item != null) ? item.getNumeroRecipiente() : ""%>" maxlength="9" minlength="9" required>
 						</div>
 						<div class="form-group">
 							<label class="text-secondary">Monto</label> 
 							<input class="form-control" type="text" name="txtMonto"
-							value="<%=(item != null) ? item.getMontoRecipiente() : ""%>">
+							value="<%=(item != null) ? item.getMontoRecipiente() : ""%>" required>
 							<input type="hidden" name="txtMontoAntiguo"
 							value="<%=(item != null) ? item.getMontoRecipiente() : ""%>">
 						</div>
