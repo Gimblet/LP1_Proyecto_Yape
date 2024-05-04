@@ -3,6 +3,7 @@ package gestion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import interfaces.IntYape;
 import util.MysqlConexion;
 
 public class Metodos implements IntYape {
+	
+	DecimalFormat limitarDecimales = new DecimalFormat("#.00");
 
 	public Logins Login(int numero, String clave, String tipoUsr) {
 		Connection con = null;
@@ -582,7 +585,7 @@ public class Metodos implements IntYape {
 			psm.setInt(1, obtenerUsuario());
 			rs = psm.executeQuery();
 			rs.next();
-			saldo.setSaldo(rs.getDouble("Saldo"));
+			saldo.setSaldo(Double.parseDouble(limitarDecimales.format(rs.getDouble("Saldo"))));
 		} catch(Exception e) {
 			System.out.println("Problema en metodos.consultarSaldo");
 		} finally {
@@ -685,7 +688,7 @@ public class Metodos implements IntYape {
 				users.setIdUsuario(rs.getInt("IdUsuario"));
 				users.setTipoUsuario(rs.getString("TipoUsuario"));
 				users.setNombreApellidos(rs.getString("NombreApellidos"));
-				users.setSaldo(rs.getDouble("Saldo"));
+				users.setSaldo(Double.parseDouble(limitarDecimales.format(rs.getDouble("Saldo"))));
 				users.setNumero(rs.getInt("Numero"));
 				users.setClave(rs.getString("Clave"));
 				userList.add(users);
