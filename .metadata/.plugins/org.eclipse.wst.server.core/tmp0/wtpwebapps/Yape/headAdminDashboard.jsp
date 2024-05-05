@@ -62,6 +62,8 @@ input:hover {
 			<section id="btn-group">
 				<div>
 					<h1>Hola, <%= metodo.obtenerNombre() %></h1>
+					<% if(request.getAttribute("Mensaje") != null){ %>
+						<h5 class="alert alert-danger">${Mensaje }</h5> <%} %>
 					<form action="Servlet" method="post">
 						<input class="btn btn-primary" type="submit" value="Nuevo Usuario" name="type"> 
 						<input class="btn btn-primary" type="submit" value="Mostrar Usuarios" name="type"> 

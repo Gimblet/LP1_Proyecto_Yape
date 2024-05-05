@@ -68,7 +68,7 @@ section {
 							<h5 class="alert alert-danger">Información no editable</h5>
 						</div>
 						<div class="form-group">
-							<label class="text-secondary">ID Yape : <strong><%=(item != null) ? item.getIdUsuario() : ""%></strong></label>
+							<label class="text-secondary">ID de Usuario : <strong><%=(item != null) ? item.getIdUsuario() : ""%></strong></label>
 							<input type="hidden" name="idUsuario"
 								value="<%=(item != null) ? item.getIdUsuario() : ""%>">
 						</div>

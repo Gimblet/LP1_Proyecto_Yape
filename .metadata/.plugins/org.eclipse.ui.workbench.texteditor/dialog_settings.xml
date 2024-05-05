@@ -5,13 +5,18 @@
 		<item key="DIALOG_Y_ORIGIN" value="572"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Numero"/>
+		<item key="selection" value="Hubo un error"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="Hubo un error"/>
+			<item value="al intentar"/>
+			<item value="al intenttar"/>
+			<item value="El numero ingresado no existe al intentar editar"/>
+			<item value="listar"/>
 			<item value="numero"/>
 			<item value="No hubo saldo suficiente"/>
 			<item value="obtenersaldo"/>
@@ -22,11 +27,6 @@
 			<item value="Listar"/>
 			<item value="infousuario"/>
 			<item value="update"/>
-			<item value="alter"/>
-			<item value="infoYape"/>
-			<item value="ValidacionYape"/>
-			<item value="yapeando desde"/>
-			<item value="FALTA"/>
 		</list>
 		<list key="replacehistory">
 		</list>

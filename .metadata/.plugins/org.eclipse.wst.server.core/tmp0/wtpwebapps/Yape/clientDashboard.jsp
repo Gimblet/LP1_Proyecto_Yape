@@ -107,7 +107,7 @@ form div {
 											IDStatus = (String) request.getAttribute("IDInvalido");
 									}%> placeholder="<%=IDStatus%>">
 							</div>
-							<input class="btn btn-primary" id="cerrar" type="submit" value="Cerrar Sesion" name="type">
+							<input class="btn btn-secondary" id="cerrar" type="submit" value="Cerrar Sesion" name="type">
 						</div>
 					</form>
 				</div>

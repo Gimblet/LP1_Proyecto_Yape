@@ -59,9 +59,9 @@ section {
 	<div class="container">
 		<main class="border rounded">
 			<section>
-				<h1>
-					Hola,
-					<%=metodo.obtenerNombre()%></h1>
+				<h1>Hola,<%=metodo.obtenerNombre()%></h1>
+				<% if(request.getAttribute("mensaje") != null){ %>
+					<h5 class="alert alert-danger">${mensaje }</h5> <%} %>
 				<br>
 				<div class="group-btn">
 					<form action="Servlet" method="post">

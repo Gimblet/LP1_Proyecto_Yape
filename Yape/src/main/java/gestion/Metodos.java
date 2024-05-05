@@ -305,7 +305,6 @@ public class Metodos implements IntYape {
 				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?;";
 				psm = con.prepareStatement(sql);
 				psm.setDouble(1, nuevoSaldo);
-				System.out.println("El Nuevo de la persona que solo puede aumentar es" + nuevoSaldo);
 				psm.setInt(2, numeroRec);
 				psm.executeUpdate();
 				psm.close();
@@ -322,7 +321,6 @@ public class Metodos implements IntYape {
 				sql = "UPDATE Logins SET Saldo=? WHERE Numero=?;";
 				psm = con.prepareStatement(sql);
 				psm.setDouble(1, nuevoSaldo);
-				System.out.println("El Nuevo de la persona que disminuye todo es" + nuevoSaldo);
 				psm.setInt(2, OGNumber);
 				psm.executeUpdate();
 				psm.close();
