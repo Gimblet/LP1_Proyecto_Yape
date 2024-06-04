@@ -1,84 +1,3 @@
--- ---------------------------------- CREAR FUNCTIONS --------------------------------
--- RETORNA EL CODIGO DEL ULTIMO USUARIO CREADO
-DELIMITER $$
-CREATE FUNCTION FN_GetUltimoUsuario()
-	RETURNS INT
-    DETERMINISTIC
-BEGIN
-	DECLARE TEMP_COD INT;
-    
-	SELECT COD_USU INTO TEMP_COD 
-    FROM LOGINS.USUARIO 
-		ORDER BY COD_USU DESC
-		LIMIT 1;
-    
-    RETURN TEMP_COD;
-END $$
-DELIMITER ;
-
--- RETORNA EL ULTIMO VALOR DE COMISION
-DELIMITER $$
-CREATE FUNCTION FN_ValorComision()
-	RETURNS INT
-    DETERMINISTIC
-BEGIN
-	DECLARE VALOR DOUBLE;
-    
-    SELECT 	VAL_COM INTO VALOR 
-    FROM INFORMATIVOS.COMISION 
-		ORDER BY FEA_COM DESC
-        LIMIT 1;
-        
-	RETURN VALOR;
-END$$
-DELIMITER ;
-
--- VERIFICA QUE EL TELEFONO DE UN USUARIO SEAN VALIDOS, RETORNA 0 SI ES INVALIDO, UNO SI AMBOS SON VALIDOS
-
-DELIMITER $$
-	CREATE FUNCTION FN_VerificarNumeroyCodigo
-    (
-		Codigo INT,
-        Telefono CHAR(9)
-    )
-		RETURNS INT 
-		DETERMINISTIC
-	BEGIN
-		DECLARE Resultado INT;
-        
-		SELECT IF	(COD_USU = Codigo, 1, 0)
-        INTO 		Resultado
-		FROM 		LOGINS.USUARIO 
-		WHERE 		COD_USU = Codigo;
-        
-        SELECT IF	(TEL_USU = Telefono, 0, 1) 
-        INTO 		Resultado
-        FROM 		LOGINS.USUARIO
-        WHERE 		TEL_USU = Telefono;
-        
-        RETURN Resultado;
-    END $$
-DELIMITER ;
-
-DELIMITER $$
-	CREATE FUNCTION FN_VerificarTipoUsuario
-    (
-		Codigo INT
-    )
-		RETURNS VARCHAR(15) 
-		DETERMINISTIC
-	BEGIN
-		DECLARE Resultado VARCHAR(15);
-        
-		SELECT TIP_USU INTO Resultado
-        FROM LOGINS.USUARIO
-        WHERE COD_USU = Codigo;
-        
-        RETURN Resultado;
-    END $$
-DELIMITER ;
-
--- ---------------------------------  CREAR STORED PROCEDURES ----------------------------------
 -- REGISTRAR CLIENTE
 DELIMITER $$
 CREATE PROCEDURE SP_RegistrarCliente
@@ -87,27 +6,33 @@ CREATE PROCEDURE SP_RegistrarCliente
     Nombres 	VARCHAR(50),
     Apellidos	VARCHAR(50),
     Telefono	CHAR(9),
-    Clave		VARCHAR(100),
-    Saldo		DOUBLE
-)
+    Clave		VARCHAR(100)
+) Procedimiento:
 BEGIN
-	DECLARE Codigo INT;
+	DECLARE TelefonoExiste VARCHAR(10);
+    DECLARE Codigo INT;
+    SET 	TelefonoExiste = FN_VerificarSiTelefonoExiste(Telefono);
 
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El telefono Ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
+	END IF;
+    
 	INSERT INTO LOGINS.USUARIO
 		(DNI_USU, TIP_USU, NOM_USU, APE_USU, TEL_USU, CON_USU)
 	VALUES
 		(Dni, 'Cliente', Nombres, Apellidos, Telefono, Clave);
 	
-    SET Codigo = FN_GetUltimoUsuario();
+    SET Codigo = FN_GetCodigoUltimoUsuario();
     
 	INSERT INTO LOGINS.USUARIO_CLIENTE
-    (COD_CLI, SAL_CLI)
+    (COD_CLI)
 	VALUES
-		(Codigo, Saldo);
+		(Codigo);
 END $$
 DELIMITER ;
 
-CALL SP_RegistrarCliente('72844444', 'Julio Diego', 'Perez Sanchez', '999888777','Julio123', 1000.24);
+CALL SP_RegistrarCliente('72844444', 'Julio Diego', 'Perez Sanchez', '999888777','Julio123');
 
 -- REGISTRAR ADMINISTRADOR (ADMIN)
 DELIMITER $$
@@ -119,16 +44,28 @@ CREATE PROCEDURE SP_RegistrarAdmin
     Telefono	CHAR(9),
     Clave		VARCHAR(100),
     Sueldo		DOUBLE
-)
+) Procedimiento:
 BEGIN
-	DECLARE Codigo INT;
+    DECLARE TelefonoExiste VARCHAR(10);
+    DECLARE Codigo INT;
+    SET 	TelefonoExiste = FN_VerificarSiTelefonoExiste(Telefono);
 
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El telefono Ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
+	END IF;
+    
+    IF(Sueldo < 1050) THEN
+		SET Sueldo = 1050;
+		SELECT 'Advertencia > El sueldo base del Administrador no puede ser menor a 1050 soles. Se registró el administrador con 1050 soles de sueldo base ' AS Mensaje;
+	END IF;
+	
 	INSERT INTO LOGINS.USUARIO
 		(DNI_USU, TIP_USU, NOM_USU, APE_USU, TEL_USU, CON_USU)
 	VALUES
 		(Dni, 'Admin', Nombres, Apellidos, Telefono, Clave);
         
-	SET CODIGO = FN_GetUltimoUsuario();
+	SET Codigo = FN_GetCodigoUltimoUsuario();
         
 	INSERT INTO LOGINS.USUARIO_ADMIN
 		(COD_ADM,SUB_ADM)
@@ -149,16 +86,28 @@ CREATE PROCEDURE SP_RegistrarHeadAdmin
     Telefono	CHAR(9),
     Clave		VARCHAR(100),
     Sueldo		DOUBLE
-)
+) Procedimiento:
 BEGIN
-	DECLARE Codigo INT;
+    DECLARE TelefonoExiste VARCHAR(10);
+    DECLARE Codigo INT;
+    SET 	TelefonoExiste = FN_VerificarSiTelefonoExiste(Telefono);
 
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El telefono Ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
+	END IF;
+    
+    IF(Sueldo < 1800) THEN
+		SET Sueldo = 1800;
+		SELECT 'Advertencia > El sueldo base del Administrador Principal no puede ser menor a 1800 soles. Se registró a el administrador con 1800 soles de sueldo base ' AS Mensaje;
+	END IF;
+	
 	INSERT INTO LOGINS.USUARIO
 		(DNI_USU, TIP_USU, NOM_USU, APE_USU, TEL_USU, CON_USU)
 	VALUES
 		(Dni, 'HeadAdmin', Nombres, Apellidos, Telefono, Clave);
         
-	SET CODIGO = FN_GetUltimoUsuario();
+	SET Codigo = FN_GetCodigoUltimoUsuario();
         
 	INSERT INTO LOGINS.USUARIO_HEADADMIN
 	VALUES
@@ -264,24 +213,32 @@ CREATE PROCEDURE SP_ActualizarCliente
     Estado		VARCHAR(15)
 ) Procedimiento:
 BEGIN
-	DECLARE Valido INT;
-    DECLARE OGTelefono CHAR(9);
-    DECLARE Tipo VARCHAR(15);
-    SET 	Valido = FN_VerificarNumeroyCodigo(Codigo, Telefono);
-    SET 	Tipo = FN_VerificarTipoUsuario(Codigo);
-
-	IF (Valido = 0) THEN
-		SELECT 'El Codigo no Existe o el Telefono ingresado ya se encuentra registrado' AS Mensaje;
+	DECLARE CodigoExiste 		VARCHAR(10);
+	DECLARE TelefonoExiste 		VARCHAR(10);
+    DECLARE TelefonoAnterior 	CHAR(9);
+    DECLARE TipoUsuario 		VARCHAR(15);
+    
+    SET 	CodigoExiste 	= FN_VerificarSiCodigoExiste(Codigo);
+    SET 	TipoUsuario 	= FN_VerificarTipoUsuario(Codigo);
+    SET 	TelefonoExiste 	= FN_VerificarSiTelefonoExiste(Telefono);
+    
+    IF (CodigoExiste != 'Existe') THEN
+		SELECT 'ERROR > El Codigo Ingresado no Existe' AS Mensaje;
 		LEAVE Procedimiento;
 	END IF;
     
-    IF(Tipo != 'Cliente') THEN
-		SELECT 'El Codigo Ingresado No Pertenece a un Cliente' AS Mensaje;
+    IF(TipoUsuario != 'Cliente') THEN
+		SELECT 'ERROR > El Codigo Ingresado No Pertenece a un Cliente' AS Mensaje;
         LEAVE Procedimiento;
+	END IF;
+
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El Telefono ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
 	END IF;
     
 	SELECT 	TEL_USU 
-    INTO 	OGTelefono 
+    INTO 	TelefonoAnterior 
 	FROM 	LOGINS.USUARIO 
 	WHERE 	COD_USU = Codigo;
 
@@ -305,11 +262,11 @@ BEGIN
 
 	UPDATE TRANSACCIONES.YAPE
 		SET NRC_YAP = Telefono
-	WHERE NRC_YAP = OGTelefono;
+	WHERE NRC_YAP = TelefonoAnterior;
 
 	UPDATE TRANSACCIONES.YAPE
 		SET NRT_YAP = Telefono
-	WHERE NRT_YAP = OGTelefono;
+	WHERE NRT_YAP = TelefonoAnterior;
 		
 	ALTER TABLE TRANSACCIONES.YAPE
 	ADD CONSTRAINT yape_ibfk_1
@@ -323,7 +280,33 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL SP_ActualizarCliente(2, '91893044', 'Miguel Ivan', 'Rodriguez Campos', '948930132', 'Miguel032', 1204.51, 'Inactiva');
+CALL SP_ActualizarCliente(2, '91893044', 'Miguel Ivan', 'Rodriguez Campos', '983746222', 'Miguel032', 1837.23, 'Inactiva');
+
+DELIMITER $$
+ CREATE PROCEDURE SP_UpdateSaldoCliente
+ (
+	Codigo INT,
+    Saldo DOUBLE
+ ) Procedimiento :
+ BEGIN
+	DECLARE Valido INT;
+    SET Valido = FN_VerificarCodigoCliente(Codigo);
+    
+    IF(Valido = 0) THEN
+		SELECT 'ERROR > El codigo Ingresado no existe o no es de un cliente' AS Mensaje;
+        LEAVE Procedimiento;
+	END IF;
+
+	IF(Saldo < 0) THEN
+		SELECT 'ADVERTENCIA > Se detectó un ingreso de saldo no permitido' AS Mensaje;
+        LEAVE Procedimiento;
+	END IF;
+ 
+	UPDATE LOGINS.USUARIO_CLIENTE 
+    SET SAL_CLI = Saldo
+    WHERE COD_CLI = Codigo;
+ END$$
+DELIMITER ; 
 
 DELIMITER $$
 CREATE PROCEDURE SP_ActualizarAdminSP
@@ -336,35 +319,42 @@ CREATE PROCEDURE SP_ActualizarAdminSP
     Clave 		VARCHAR(100)
 ) Procedimiento:
 BEGIN
-	DECLARE Valido INT;
-    DECLARE OGTelefono CHAR(9);
-    DECLARE Tipo VARCHAR(15);
-    SET 	Valido = FN_VerificarNumeroyCodigo(Codigo, Telefono);
-    SET 	Tipo = FN_VerificarTipoUsuario(Codigo);
-
-	IF (Valido = 0) THEN
-		SELECT 'El Codigo no Existe o el Telefono ingresado ya se encuentra registrado' AS Mensaje;
-		LEAVE Procedimiento;
-    END IF;
+	DECLARE CodigoExiste 		VARCHAR(10);
+	DECLARE TelefonoExiste 		VARCHAR(10);
+    DECLARE TipoUsuario 		VARCHAR(15);
     
-    IF(Tipo != 'Admin') THEN
-		SELECT 'El Codigo Ingresado No Pertenece a un Administrador' AS Mensaje;
-        LEAVE Procedimiento;
+    SET 	CodigoExiste 	= FN_VerificarSiCodigoExiste(Codigo);
+    SET 	TipoUsuario 	= FN_VerificarTipoUsuario(Codigo);
+    SET 	TelefonoExiste 	= FN_VerificarSiTelefonoExiste(Telefono);
+    
+    IF (CodigoExiste != 'Existe') THEN
+		SELECT 'ERROR > El Codigo Ingresado no Existe' AS Mensaje;
+		LEAVE Procedimiento;
 	END IF;
     
-    UPDATE LOGINS.USUARIO
-    SET DNI_USU = Dni, 
-		NOM_USU = Nombres, 
-		APE_USU = Apellidos,
-		TEL_USU = Telefono,
-		CON_USU = Clave
-	WHERE COD_USU = Codigo;
+    IF(TipoUsuario != 'Admin') THEN
+		SELECT 'ERROR > El Codigo Ingresado No Pertenece a un Administrador' AS Mensaje;
+        LEAVE Procedimiento;
+	END IF;
+
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El Telefono ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
+	END IF;
+    
+    UPDATE 	LOGINS.USUARIO
+    SET 	DNI_USU = Dni, 
+			NOM_USU = Nombres, 
+			APE_USU = Apellidos,
+			TEL_USU = Telefono,
+			CON_USU = Clave
+	WHERE 	COD_USU = Codigo;
     
     SELECT 'Datos Actualizados Correctamente' AS Mensaje;
 END $$
 DELIMITER ;
 
-CALL SP_ActualizarAdminSP(5, '93847322', 'Alexa Maria', 'Mendoza Flores', '903844224', 'Alexa48h');
+CALL SP_ActualizarAdminSP(4, '93847322', 'Alexa Maria', 'Mendoza Flores', '903844224', 'Alexa48h');
 
 DELIMITER $$
 CREATE PROCEDURE SP_ActualizarHeadAdmin
@@ -378,39 +368,46 @@ CREATE PROCEDURE SP_ActualizarHeadAdmin
     Sueldo 		DOUBLE
 ) Procedimiento:
 BEGIN
-	DECLARE Valido INT;
-    DECLARE OGTelefono CHAR(9);
-    DECLARE Tipo VARCHAR(15);
-    SET 	Valido = FN_VerificarNumeroyCodigo(Codigo, Telefono);
-    SET 	Tipo = FN_VerificarTipoUsuario(Codigo);
-
-	IF (Valido = 0) THEN
-		SELECT 'El Codigo no Existe o el Telefono ingresado ya se encuentra registrado' AS Mensaje;
+	DECLARE CodigoExiste 		VARCHAR(10);
+	DECLARE TelefonoExiste 		VARCHAR(10);
+    DECLARE TipoUsuario 		VARCHAR(15);
+    
+    SET 	CodigoExiste 	= FN_VerificarSiCodigoExiste(Codigo);
+    SET 	TipoUsuario 	= FN_VerificarTipoUsuario(Codigo);
+    SET 	TelefonoExiste 	= FN_VerificarSiTelefonoExiste(Telefono);
+    
+    IF (CodigoExiste != 'Existe') THEN
+		SELECT 'ERROR > El Codigo Ingresado no Existe' AS Mensaje;
 		LEAVE Procedimiento;
 	END IF;
     
-    IF(Tipo != 'HeadAdmin') THEN
-		SELECT 'El Codigo Ingresado No Pertenece a un Administrador Superior (HeadAdmin)' AS Mensaje;
+    IF(TipoUsuario != 'HeadAdmin') THEN
+		SELECT 'ERROR > El Codigo Ingresado No Pertenece a un Administrador Principal' AS Mensaje;
         LEAVE Procedimiento;
 	END IF;
+
+	IF (TelefonoExiste != 'No Existe') THEN
+		SELECT 'ERROR > El Telefono ingresado ya se encuentra registrado' AS Mensaje;
+		LEAVE Procedimiento;
+	END IF;
     
-    UPDATE LOGINS.USUARIO_HEADADMIN
-    SET SUE_HEA = Sueldo
-    WHERE COD_HEA = Codigo;
+    UPDATE 	LOGINS.USUARIO_HEADADMIN
+    SET 	SUE_HEA = Sueldo
+    WHERE 	COD_HEA = Codigo;
     
-    UPDATE LOGINS.USUARIO
-    SET DNI_USU = Dni, 
-		NOM_USU = Nombres, 
-		APE_USU = Apellidos,
-		TEL_USU = Telefono,
-		CON_USU = Clave
-	WHERE COD_USU = Codigo;
+    UPDATE 	LOGINS.USUARIO
+    SET 	DNI_USU = Dni, 
+			NOM_USU = Nombres, 
+			APE_USU = Apellidos,
+			TEL_USU = Telefono,
+			CON_USU = Clave
+	WHERE 	COD_USU = Codigo;
     
     SELECT 'Datos Actualizados Correctamente' AS Mensaje;
 END $$
 DELIMITER ;
 
-CALL SP_ActualizarHeadAdmin(6, '83748233', 'Isaias Raul', 'Pascal Ramos', '923749400', 'Isaias38kA', 4313.51);
+CALL SP_ActualizarHeadAdmin(5, '83748233', 'Isaias Raul', 'Pascal Ramos', '923749400', 'Isaias38kA', 4313.51);
     
 -- ----- TO DO
 

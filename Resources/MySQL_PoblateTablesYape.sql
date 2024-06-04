@@ -1,16 +1,35 @@
 
 -- INGRESO DE CLIENTES
 
-CALL dbyape.SP_RegistrarCliente('70282011', 'Valentina Laura', 'Sanchez Fernandez', '934713573', 'vale', 384.21);
-CALL dbyape.SP_RegistrarCliente('02782713', 'Yvet Monica', 'Morales Ramirez', '985729373', 'yvei38', 3492.34);
-CALL dbyape.SP_RegistrarCliente('92732271', 'Paola Fernanda', 'Castro Villacorta', '972017391', 'paoLi38', 134.1);
-CALL dbyape.SP_RegistrarCliente('93285721', 'Jorge Andres', 'Torres Fernandez', '933028472', 'jor238', 724.22);
-CALL dbyape.SP_RegistrarCliente('28494732', 'Andres Pedro', 'Aguilar Rodriguez', '948274893', 'andr82A', 3634.64);
-CALL dbyape.SP_RegistrarCliente('58275024', 'Maria Camila ', 'Vásquez Estevez', '937499321', 'maria83hs', 2248.11);
+CALL dbyape.SP_RegistrarCliente('70282011', 'Valentina Laura', 'Sanchez Fernandez', '934713573', 'vale');
+CALL dbyape.SP_RegistrarCliente('02782713', 'Yvet Monica', 'Morales Ramirez', '985729373', 'yvei38');
+CALL dbyape.SP_RegistrarCliente('92732271', 'Paola Fernanda', 'Castro Villacorta', '972017391', 'paoLi38');
+CALL dbyape.SP_RegistrarCliente('93285721', 'Jorge Andres', 'Torres Fernandez', '933028472', 'jor238');
+CALL dbyape.SP_RegistrarCliente('28494732', 'Andres Pedro', 'Aguilar Rodriguez', '948274893', 'andr82A');
+CALL dbyape.SP_RegistrarCliente('58275024', 'Maria Camila ', 'Vásquez Estevez', '937499321', 'maria83hs');
+
+-- INGRESAR SALDO A LOS CLIENTES
+
+CALL dbyape.SP_UpdateSaldoCliente(4, 384.21);
+CALL dbyape.SP_UpdateSaldoCliente(7, 3492.34);
+CALL dbyape.SP_UpdateSaldoCliente(8, 134.1);
+CALL dbyape.SP_UpdateSaldoCliente(9, 724.22);
+CALL dbyape.SP_UpdateSaldoCliente(10, 3634.64);
+CALL dbyape.SP_UpdateSaldoCliente(11, 2248.11);
+CALL dbyape.SP_UpdateSaldoCliente(12, 1028.18);
+
+CALL dbyape.SP_UpdateSaldoCliente(13, 3492.34);
+CALL dbyape.SP_UpdateSaldoCliente(12, -1);
 
 -- INGRESO DE ADMINISTRADORES
 
+
+
 -- INGRESO DE HEADADMINS
+
+CALL dbyape.SP_RegistrarHeadAdmin('78204522', 'Lorenzo Sergio', 'Pedroza Vera', '969966585', 'Loreign382', 1900);
+CALL dbyape.SP_RegistrarHeadAdmin('74927401', 'Montserrat Bianca', 'Arce Barrios', '937048231', 'monsssert31', 1852.93);
+CALL dbyape.SP_RegistrarHeadAdmin('38428912', 'Ariana Martina', 'Bustos Valencia', '935422741', 'airheu3m', 100); 
 
 -- ------------------------------ BULK DATA -------------------------------
 
