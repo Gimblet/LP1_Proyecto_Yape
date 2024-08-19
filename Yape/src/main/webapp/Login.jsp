@@ -67,7 +67,7 @@
 				<section>
 					<img src="Resources/YAPE-LOGO.png" alt="LogoYape" width="80px" height="70px">
 					<div class="Message">
-						<h4>Bienvenido Yaper@</h4>
+						<h4>Bienvenido Yaper@!</h4>
 						<% if (request.getAttribute("mensaje") !=null) { %>
 							<br>
 							<small class="alert alert-danger">${mensaje}</small>

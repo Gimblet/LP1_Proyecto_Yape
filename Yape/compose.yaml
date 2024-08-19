@@ -1,0 +1,24 @@
+services:
+  web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Tomcat-Server
+    ports:
+      - "8888:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: target/Yape-latest/
+          target: /usr/local/tomcat/webapps/Yape
+  database:
+    image: mysql:8.0.39
+    container_name: Mysql-DB
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Nenti182912
+    volumes:
+      - dbYapeVol:/var/lib/mysql
+volumes:
+  dbYapeVol:
