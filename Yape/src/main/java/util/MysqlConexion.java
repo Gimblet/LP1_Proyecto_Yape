@@ -9,9 +9,9 @@ public class MysqlConexion {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-			String url = "jdbc:mysql://localhost:3306/dbYape";
+			String url = "jdbc:mysql://Mysql-DB:3306/dbYape";
 			String usr = "root";
-			String psw = "mysql";
+			String psw = "Nenti182912";
 			con = DriverManager.getConnection(url, usr, psw);
 		} catch(ClassNotFoundException e) {
 			System.out.println("Error con el Driver de Base de Datos" + e.getMessage());

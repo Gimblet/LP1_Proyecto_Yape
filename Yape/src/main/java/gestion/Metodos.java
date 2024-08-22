@@ -23,7 +23,7 @@ public class Metodos implements IntYape {
 		ResultSet rs = null;
 		Logins loginData = new Logins();
 		try {
-			String sql = "SELECT TipoUsuario, Numero, Clave, NombreApellidos FROM logins WHERE Numero=? AND Clave=? AND TipoUsuario=?;";
+			String sql = "SELECT TipoUsuario, Numero, Clave, NombreApellidos FROM Logins WHERE Numero=? AND Clave=? AND TipoUsuario=?;";
 			con = MysqlConexion.getConexion();
 			psm = con.prepareStatement(sql);
 			psm.setInt(1, numero);
@@ -50,6 +50,7 @@ public class Metodos implements IntYape {
 			psm.executeUpdate();
 		} catch(Exception e) {
 			System.out.println("Error en el bloque Try Catch de Metodos-Login || Datos incorrectos");
+			e.printStackTrace();
 			return null;
 		} finally {
 			try {
@@ -70,11 +71,11 @@ public class Metodos implements IntYape {
 		ResultSet rs = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "Select numero from currentUsers;";
+			String sql = "Select Numero from CurrentUsers;";
 			psm = con.prepareStatement(sql);
 			rs = psm.executeQuery();
 			rs.next();
-			numero = rs.getInt("numero");
+			numero = rs.getInt("Numero");
 		}catch(Exception e) {
 			System.out.println("No se pudo Obtener el Usuario/No Existe");
 		} finally {
@@ -96,7 +97,7 @@ public class Metodos implements IntYape {
 		String tipoUsuario = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "Select TipoUsuario from currentUsers;";
+			String sql = "Select TipoUsuario from CurrentUsers;";
 			psm = con.prepareStatement(sql);
 			rs = psm.executeQuery();
 			rs.next();
@@ -122,7 +123,7 @@ public class Metodos implements IntYape {
 		String tipoUsuario = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "Select NombreApellidos from currentUsers;";
+			String sql = "Select NombreApellidos from CurrentUsers;";
 			psm = con.prepareStatement(sql);
 			rs = psm.executeQuery();
 			rs.next();
@@ -879,7 +880,7 @@ public class Metodos implements IntYape {
 		PreparedStatement psm = null;
 		try {
 			con = MysqlConexion.getConexion();
-			String sql = "Delete from currentUsers;";
+			String sql = "Delete from CurrentUsers;";
 			psm = con.prepareStatement(sql);
 			psm.executeUpdate();
 		} catch(Exception e) {
